@@ -16,7 +16,7 @@ include "config.php";
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="script.js"></script>
-    <title>แสดง section</title>
+    <title>TA เพิ่มอาจารย์</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -86,17 +86,13 @@ teacher.tName LIKE '%พุธษดี%'");
   <form action="add.php" method="post">
   <div class="form-group">
     <div align="center">
-        <label>แสดง Section</label>
+        <label>เพิ่มอาจารย์</label>
     </div>
+    <label>ชื่ออาจารย์</label>
+    <input type="text" class="form-control" id="cNumber" placeholder="">
   </div>
   <div align="right">
-    <a href="teacherAddTeacher.php"><button type="submit" class="btn btn-primary" id="addSubject">เพิ่มอาจารย์</button></a>
-    <a href="teacherAddTa.php"><button type="submit" class="btn btn-primary" id="addSubject">เพิ่มผู้ช่วยสอนอาจารย์</button></a>
-  </div>
-  <br> <br>
-  <div align="left">
-    <a href="teacherShowSectionDetail.php"><button type="submit" class="btn btn-primary" id="addSubject">Section 1</button> </a><br> <br> <br>
-    <a href="teacherShowSectionDetail.php"><button type="submit" class="btn btn-primary" id="addSubject">Section 2</button></a>
+    <button type="submit" class="btn btn-primary" id="addSubject">เพิ่ม</button>
   </div>
   <br>
 </form>
