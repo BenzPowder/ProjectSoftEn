@@ -111,7 +111,7 @@ $i = 0;
         echo "<td><center>".$objResult['stuId']."</center></td>";
         echo "<td><center>".$objResult['stuName']."</center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center><a href='studentShowSection.php'>".$objResult['cName']."<a></center></td>";
+        echo "<td><center><a href='studentShowSection.php'>".$objResult['cName']."</a></center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
         echo "<td><center>".$objResult['secName']."</center></td>";

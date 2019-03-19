@@ -109,7 +109,7 @@ $i = 0;
         echo "<td><center>".$objResult['taId']."</center></td>";
         echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center>".$objResult['cName']."</center></td>";
+        echo "<td><center><a href='taShowSection.php'>".$objResult['cName']."</a></center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
 
