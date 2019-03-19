@@ -108,7 +108,7 @@ $i = 0;
 ?>
 </div><br>
     <div class="container" align="center">
-    <a href="addStudent.php">เพิ่มนักศึกษา</a>
+    <a href="taAddStudent.php">เพิ่มนักศึกษา</a>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
