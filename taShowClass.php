@@ -73,31 +73,28 @@ a:hover {
 
         <br><br>
         <?php
-    $query = mysqli_query($conn,"select `student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`section`.`secName` AS `secName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from (((`section_has_student` join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) join `section` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `subject` on((`section`.`subject_cId` = `subject`.`cId`)))");
+    $query = mysqli_query($conn,"select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`ta`.`taId` = '593020419-6') and (`ta`.`taId` = `subject_has_ta`.`ta_taId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`))");
  ?>
         <table class="table table-striped" id="myTable">
             <thead>
                 <tr>
                     <th>
-                        <center>รหัสนักศึกษา</center>
+                        <center>รหัสผู้ช่วยสอน</center>
                     </th>
                     <th>
-                        <center>ชื่อนักศึกษา</center>
+                        <center>ชื่อผู้ช่วยสอน</center>
                     </th>
                     <th>
-                        <center>รหัสวิชา</center>
+                        <center>รหัสวิชาที่สอน</center>
                     </th>
                     <th>
-                        <center>ชื่อวิชา</center>
+                        <center>ชื่อวิชาที่สอน</center>
                     </th>
                     <th>
                         <center>ปีการศึกษา</center>
                     </th>
                     <th>
                         <center>เทอม</center>
-                    </th>
-                    <th>
-                        <center>เซค</center>
                     </th>
 
                 </tr>
@@ -109,13 +106,12 @@ $i = 0;
        while($objResult = mysqli_fetch_array($query)){
         $i= $i+1;
         echo "<tr>";
-        echo "<td><center>".$objResult['stuId']."</center></td>";
-        echo "<td><center>".$objResult['stuName']."</center></td>";
+        echo "<td><center>".$objResult['taId']."</center></td>";
+        echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
         echo "<td><center>".$objResult['cName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center>".$objResult['secName']."</center></td>";
 
         echo "</tr>";
       }
@@ -123,7 +119,7 @@ $i = 0;
 ?>
                 </div>
                 <div class="container" align="center">
-                    <a href="addSubject.php">เพิ่มนักศึกษา</a>
+                    <a href="addSubject.php">เพิ่มวิชา</a>
                 </div>
                 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 

@@ -73,7 +73,7 @@ a:hover {
 
         <br><br>
         <?php
-    $query = mysqli_query($conn,"select `student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`section`.`secName` AS `secName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from (((`section_has_student` join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) join `section` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `subject` on((`section`.`subject_cId` = `subject`.`cId`)))");
+    $query = mysqli_query($conn,"select `student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`section`.`secName` AS `secName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from (((`section_has_student` join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) join `section` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `subject` on((`section`.`subject_cId` = `subject`.`cId`))) where ((`student`.`stuId` = '593020419-6') and (`student`.`stuId` = `section_has_student`.`student_stuId`) and (`section_has_student`.`section_subject_cId` = `subject`.`cId`))");
  ?>
         <table class="table table-striped" id="myTable">
             <thead>
@@ -85,7 +85,7 @@ a:hover {
                         <center>ชื่อนักศึกษา</center>
                     </th>
                     <th>
-                        <center>รหัสวิชา</center>
+                        <center>รหัสวิชา/center>
                     </th>
                     <th>
                         <center>ชื่อวิชา</center>
@@ -99,7 +99,6 @@ a:hover {
                     <th>
                         <center>เซค</center>
                     </th>
-
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +122,7 @@ $i = 0;
 ?>
                 </div>
                 <div class="container" align="center">
-                    <a href="addSubject.php">เพิ่มนักศึกษา</a>
+                    <a href="addSubject.php">เพิ่มวิชา</a>
                 </div>
                 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
