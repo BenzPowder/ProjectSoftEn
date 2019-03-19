@@ -119,8 +119,8 @@ $i = 0;
 ?>
                 </div>
                 <div class="container" align="center">
-                    <a href="addSubject.php"><input type="button" name="addSubject" value="เพิ่มวิชา"> </a>
-                    <a href=""><input type="button" name="addTeacher" value="เพิ่มอาจารย์"> </a>
+                    <a href="addSubject.php"><input type="button" name="addSubject" value="เพิ่มวิชา"></a>
+                    <a href="taAddTeacher.php"><input type="button" name="addTeacher" value="เพิ่มอาจารย์"> </a>
                 </div>
                 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 

@@ -52,6 +52,7 @@ a:hover {
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
+           <font style="float: right;" >TEACHER</font>
             <a class="navbar-brand js-scroll-trigger" href="#page-top">รายชื่อนักศึกษา</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -117,7 +118,7 @@ $i = 0;
                 </div>
                 <div class="container" align="center">
                     <a href="addSubject.php"><input type="button" class="btn btn-primary" name="addSubject" value="เพิ่มวิชา"> </a>
-                    <a href="addSubject.php"><input type="button" class="btn btn-primary" name="addTa" value="เพิ่มผู้ช่วยสอน"> </a>
+                    <a href="taAddTeacher.php"><input type="button" class="btn btn-primary" name="addTeacher" value="เพิ่มอาจารย์"> </a>
                 </div>
                 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
