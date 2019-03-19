@@ -83,23 +83,21 @@ teacher.tName LIKE '%พุธษดี%'");
 
 </div> -->
 <div class="container">
-  <form action="add.php" method="post">
   <div class="form-group">
     <div align="center">
         <label>แสดง Section</label>
     </div>
   </div>
   <div align="right">
-    <a href="teacherAddTeacher.php"><button type="submit" class="btn btn-primary" id="addSubject">เพิ่มอาจารย์</button></a>
-    <a href="teacherAddTa.php"><button type="submit" class="btn btn-primary" id="addSubject">เพิ่มผู้ช่วยสอนอาจารย์</button></a>
+    <a href="teacherAddTeacher.php"><button type="button" class="btn btn-primary" id="addSubject">เพิ่มอาจารย์</button></a>
+    <a href="teacherAddTa.php"><button  type="button"class="btn btn-primary" id="addSubject">เพิ่มผู้ช่วยสอนอาจารย์</button></a>
   </div>
   <br> <br>
   <div align="left">
-    <a href="teacherShowSectionDetail.php"><button type="submit" class="btn btn-primary" id="addSubject">Section 1</button> </a><br> <br> <br>
-    <a href="teacherShowSectionDetail.php"><button type="submit" class="btn btn-primary" id="addSubject">Section 2</button></a>
+    <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary" id="addSubject">Section 1</button> </a><br> <br> <br>
+    <a href="teacherShowSectionDetail.php"><button  type="button"class="btn btn-primary" id="addSubject">Section 2</button></a>
   </div>
   <br>
-</form>
 </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
