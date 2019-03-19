@@ -106,7 +106,7 @@ $i = 0;
         echo "<tr>";
         echo "<td><center>".$objResult['tName']."</center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center>".$objResult['cName']."</center></td>";
+        echo "<td><center><a href='teacherShowSection.php'>".$objResult['cName']."<a></center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
 
