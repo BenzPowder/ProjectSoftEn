@@ -16,7 +16,7 @@ include "config.php";
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="script.js"></script>
-    <title>ระบบเช็คชื่อ</title>
+    <title>เพิ่มวิชา</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -30,8 +30,6 @@ include "config.php";
   <body background="bott2bg.jpg">
  </body>
 
-
-
 <style type="text/css">
  a,span {
     font-family: BoonJot, Helvetica, sans-serif;
@@ -40,6 +38,17 @@ include "config.php";
       text-decoration: none;
   }
 
+  .box {
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #BEBEBE;
+    background-color: #F6F6F6;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 20px;
+}
+
 
 </style>
   <body id="page-top" >
@@ -47,62 +56,43 @@ include "config.php";
 
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">ระบบเช็คชื่อ</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
+        <a class="" href="#page-top">ระบบเช็คชื่อ</a>
       </div>
     </nav>
 
     <!-- Header -->
-     <section id="training">
-
-	 <!-- <div class="container">
-        <br><br><h2 class="text-center" ><span>ค้นหา</span></h2><br>
-         <center><div class="col-lg-3 col-sm-offset-2 col-xs-offset-1 ">
-    <input type="search" id="myInput" onkeyup="myFunction()" class="form-control" style="text-align: center;" placeholder="ค้นหา">
-</div></center> -->
-
 <br><br>
 <?php
     $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
 teacher.tName LIKE '%พุธษดี%'");
  ?>
-  <table class="table table-striped" id="myTable">
-    <thead>
-      <tr>
-        <th><center>ชื่ออาจารย์</center></th>
-        <th><center>รหัสวิชาที่สอน</center></th>
-        <th><center>ชื่อวิชาที่สอน</center></th>
-        <th><center>ปีการศึกษา</center></th>
-        <th><center>เทอม</center></th>
+<!-- <div class="box" align="center">
+  <form action="add.php" method="post">
+      <br><h2>เพิ่มวิชา</h2><br><br>
+      รหัสวิชา : <input type="text" name="cNumber" id="cNumber"><br><br>
+      ชื่อวิชา : <input type="text" name="cName" id="cName"><br><br>
+      ปีการศึกษา : <input type="text" name="cYear" id="cYear"><br><br>
+      เทอม : <input type="text" name="cTerm" id="cTerm"><br><br>
+      เซคชัน : <input type="text" name="cSection" id="cSection"><br><br>
+      รหัสเข้าร่วม : <input type="text" name="cPassword" id="cPassword"><br><br>
+      สถานะรายวิชา : <input type="text" name="cStatus" id="cStatus"><br><br>
+      <input type="submit" value="บันทึก" id="save"><br><br>
+  </form>
 
-      </tr>
-    </thead>
-    <tbody>
-
-<?php
-$i = 0;
-       while($objResult = mysqli_fetch_array($query)){
-        $i= $i+1;
-        echo "<tr>";
-        echo "<td><center>".$objResult['tName']."</center></td>";
-        echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center>".$objResult['cName']."</center></td>";
-        echo "<td><center>".$objResult['cYear']."</center></td>";
-        echo "<td><center>".$objResult['cTerm']."</center></td>";
-
-        echo "</tr>";
-      }
-      echo "</table>";
-?>
+</div> -->
+<div class="container">
+  <form action="add.php" method="post">
+     
+  <div align="center">
+     <a href="teacherShowClass.php"><button type="button" class="btn btn-primary" id="teacher">teacher</button></a>
+    <a href="taShowClass.php"><button type="button" class="btn btn-primary" id="ta">ta</button></a>
+    <a href="StudentShowClass.php"><button type="button" class="btn btn-primary" id="student">student</button></a>
+  </div>
+  <br>
+</form>
 </div>
-    <div class="container" align="center">
-    <a href="addSubject.php">เพิ่มวิชา</a>
-    </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
 
@@ -125,28 +115,3 @@ $i = 0;
 
 
 </html>
-
-<script>
-// function myFunction() {
-//   var input, filter, table, tr, td,td1,td2,td3,td4, i, txtValue;
-//   input = document.getElementById("myInput");
-//   filter = input.value.toUpperCase();
-//   table = document.getElementById("myTable");
-//   tr = table.getElementsByTagName("tr");
-//   for (i = 0; i < tr.length; i++) {
-//     td = tr[i].getElementsByTagName("td")[0];
-//     td1 = tr[i].getElementsByTagName("td")[1];
-//     td2 = tr[i].getElementsByTagName("td")[2];
-//     td3 = tr[i].getElementsByTagName("td")[3];
-//     td4 = tr[i].getElementsByTagName("td")[4];
-//     if (td) {
-//       txtValue = td.textContent || td.innerText;
-//       if (txtValue.toUpperCase().indexOf(filter) > -1||td1.innerHTML.toUpperCase().indexOf(filter) > -1||td2.innerHTML.toUpperCase().indexOf(filter) > -1||td3.innerHTML.toUpperCase().indexOf(filter) > -1||td4.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//         tr[i].style.display = "";
-//       } else {
-//         tr[i].style.display = "none";
-//       }
-//     }
-//   }
-// }
-</script>
