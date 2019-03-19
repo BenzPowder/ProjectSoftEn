@@ -109,7 +109,7 @@ $i = 0;
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['stuId']."</center></td>";
-        echo "<td><center>".$objResult['stuName']."</center></td>";
+        echo "<td><center><a href='studentShowSection'>".$objResult['stuName']."<a></center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
         echo "<td><center>".$objResult['cName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
