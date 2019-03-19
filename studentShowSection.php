@@ -90,8 +90,8 @@ teacher.tName LIKE '%พุธษดี%'");
     </div>
   </div>  <br> <br>
   <div align="left">
-    <button type="button" class="btn btn-primary" id="addSubject">Section 1</button> <br> <br> <br>
-    <button type="button" class="btn btn-primary" id="addSubject">Section 2</button>
+    <a href="studentShowSectionDetail.php"><button type="button" class="btn btn-primary" id="addSubject">Section 1</button></a> <br> <br> <br>
+    <a href="studentShowSectionDetail.php"><button type="button" class="btn btn-primary" id="addSubject">Section 2</button></a>
   </div>
   <br>
 </form>
