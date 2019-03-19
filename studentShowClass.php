@@ -85,7 +85,7 @@ a:hover {
                         <center>ชื่อนักศึกษา</center>
                     </th>
                     <th>
-                        <center>รหัสวิชา/center>
+                        <center>รหัสวิชา</center>
                     </th>
                     <th>
                         <center>ชื่อวิชา</center>
