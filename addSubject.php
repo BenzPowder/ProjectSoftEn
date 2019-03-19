@@ -83,54 +83,54 @@ teacher.tName LIKE '%พุธษดี%'");
 
 </div> -->
 <div class="container">
-  <form action="add.php" method="post">
-  <div class="form-group">
-    <div align="center">
-        <label>เพิ่มวิชา</label>
+  <form action="add.php" method="POST">
+    <div class="form-group">
+      <div align="center">
+          <label>เพิ่มวิชา</label>
+      </div>
+      <label>รหัสวิชา</label>
+      <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
     </div>
-    <label>รหัสวิชา</label>
-    <input type="text" class="form-control" id="cNumber" placeholder="">
-  </div>
-  <div class="form-group">
-    <label>ชื่อวิชา</label>
-    <input type="text" class="form-control" id="cName" placeholder="">
-  </div>
-  <div class="form-group">
-    <label>ปีการศึกษา</label>
-    <input type="text" class="form-control" id="cYear" placeholder="">
-  </div>
-  <div class="form-group">
-    <label>เทอม</label>
-    <select class="form-control" id="cTerm">
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select>
-  </div>
-  <div class="form-group">
-    <label>จำนวนเซคชัน</label>
-    <select class="form-control" id="cSection">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
+    <div class="form-group">
+      <label>ชื่อวิชา</label>
+      <input type="text" name="cName" class="form-control" id="cName" placeholder="">
+    </div>
+    <div class="form-group">
+      <label>ปีการศึกษา</label>
+      <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
+    </div>
+    <div class="form-group">
+      <label>เทอม</label>
+      <select class="form-control" name="cTerm" id="cTerm">
+      <option value="1">1</option>
+      <option value="2">2</option>
     </select>
-  </div>
-  <div class="form-group">
-    <label>รหัสเข้าร่วม</label>
-    <input type="text" class="form-control" id="cPassword" placeholder="">
-  </div>
-  <div class="form-group">
-    <label>สถานะรายวิชา</label>
-    <select class="form-control" id="cStatus">
-    <option value="0">ปิด</option>
-    <option value="1">เปิด</option>
-    </select>
-  </div>
-  <div align="center">
-    <button type="submit" class="btn btn-primary" id="addSubject">Submit</button>
-  </div>
-  <br>
+    </div>
+    <div class="form-group">
+      <label>จำนวนเซคชัน</label>
+      <select class="form-control" name="cSection" id="cSection">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>รหัสเข้าร่วม</label>
+      <input type="text" class="form-control" name="cPassword" id="cPassword" placeholder="">
+    </div>
+    <div class="form-group">
+      <label>สถานะรายวิชา</label>
+      <select class="form-control" name="cStatus" id="cStatus">
+      <option value="0">ปิด</option>
+      <option value="1">เปิด</option>
+      </select>
+    </div>
+    <div align="center">
+      <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
+    </div>
+    <br>
 </form>
 </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
