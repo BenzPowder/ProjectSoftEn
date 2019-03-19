@@ -1,0 +1,23 @@
+<?php
+include "config.php";
+?>
+
+<?php
+if(isset($_POST['submit'])){
+    $cNumber = mysqli_real_escape_string($conn,$_POST['cNumber']);
+    $cName = mysqli_real_escape_string($conn,$_POST['cName']);
+    $cYear = mysqli_real_escape_string($conn,$_POST['cYear']);
+    $cTerm = mysqli_real_escape_string($conn,$_POST['cTerm']);
+    $cSection = mysqli_real_escape_string($conn,$_POST['cSection']);
+    $cPassword = mysqli_real_escape_string($conn,$_POST['cPassword']);
+    $cStatus = mysqli_real_escape_string($conn,$_POST['cStatus']);
+
+    $insert = "INSERT INTO subject (cId, cNumber, cName, cYear, cTerm, cSection, cPassword, cStatus) VALUES (NULL,$cNumber,$cName,$cYear,$cTerm,$cSection,$cPassword,$cStatus)";
+    $retval = mysqli_query($conn,$insert);
+		if($retval){
+			echo "<script>alert('บันทึกเรียบร้อย!'); location.href='index.php';</script>";
+		}else{
+		die('Could not enter data: ' . mysqli_error($conn));
+		}
+	}
+?>
