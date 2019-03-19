@@ -16,7 +16,7 @@ include "config.php";
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="script.js"></script>
-    <title>แสดง section</title>
+    <title>8hoskikp;b=k</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -86,14 +86,11 @@ teacher.tName LIKE '%พุธษดี%'");
   <form action="add.php" method="post">
   <div class="form-group">
     <div align="center">
-        <label>แสดง วิชา</label><br>
-        <label>แสดง กลุ่ม</label>
+        <label>ค้นหารายวิชา</label>
     </div>
+    <input type="text"  id="cSearch" > &nbsp;<button type="button" class="btn btn-primary" id="addSubject">ค้นหา</button>
   </div>
-  
-  <div align="left">
-    <a href="teacherViewlistStudent.php"><button type="button" class="btn btn-primary" id="addSubject">รายชื่อนักศึกษา</button></a> 
-  </div>
+ 
   <br>
 </form>
 </div>
