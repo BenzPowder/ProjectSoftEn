@@ -90,12 +90,12 @@ teacher.tName LIKE '%พุธษดี%'");
     </div>
   </div>
   <div align="right">
-    <button type="submit" class="btn btn-primary" id="addSubject">เพิ่มอาจารย์</button>
+    <button type="button" class="btn btn-primary" id="addSubject">เพิ่มอาจารย์</button>
   </div>
   <br> <br>
   <div align="left">
-    <button type="submit" class="btn btn-primary" id="addSubject">Section 1</button> <br> <br> <br>
-    <button type="submit" class="btn btn-primary" id="addSubject">Section 2</button>
+    <button type="button" class="btn btn-primary" id="addSubject">Section 1</button> <br> <br> <br>
+    <button type="button" class="btn btn-primary" id="addSubject">Section 2</button>
   </div>
   <br>
 </form>
