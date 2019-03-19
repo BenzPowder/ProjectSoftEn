@@ -3,6 +3,7 @@ include "config.php";
 ?>
 
 <?php
+$tId = 1;
 if(isset($_POST['submit'])){
     $cNumber = mysqli_real_escape_string($conn,$_POST['cNumber']);
     $cName = mysqli_real_escape_string($conn,$_POST['cName']);
@@ -12,10 +13,18 @@ if(isset($_POST['submit'])){
     $cPassword = mysqli_real_escape_string($conn,$_POST['cPassword']);
     $cStatus = mysqli_real_escape_string($conn,$_POST['cStatus']);
 
-    $insert = "INSERT INTO subject (cId, cNumber, cName, cYear, cTerm, cSection, cPassword, cStatus) VALUES (NULL,$cNumber,$cName,$cYear,$cTerm,$cSection,$cPassword,$cStatus)";
-    $retval = mysqli_query($conn,$insert);
+    $insertSubject = "INSERT INTO subject VALUES (NULL,'$cNumber','$cName','$cYear','$cTerm','$cSection','$cPassword','$cStatus')";
+    $retval = mysqli_query($conn,$insertSubject);
 		if($retval){
-			echo "<script>alert('บันทึกเรียบร้อย!'); location.href='index.php';</script>";
+
+      $lastid = $conn->insert_id;
+      $insertSubject = "INSERT INTO subject_has_teacher(`subject_cId`,`teacher_tId`) VALUES ('$lastid','$tId')";
+      $result = mysqli_query($conn,$insertSubject);
+      if($result){
+        echo "<script>alert('บันทึกเรียบร้อย!'); location.href='index.php';</script>";
+      }else{
+        die('Could not enter data: ' . mysqli_error($conn));
+      }
 		}else{
 		die('Could not enter data: ' . mysqli_error($conn));
 		}
