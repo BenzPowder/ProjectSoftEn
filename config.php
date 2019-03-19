@@ -2,7 +2,7 @@
 
       $server    ="10.199.66.227";
 	  $user      ="19S1_g4";
-	  $pass		   ="Gk58mtpY";
+	  $pass		 ="Gk58mtpY";
 	  $db_name   ="19s1_g4";
 
 	  $conn     = new mysqli(
