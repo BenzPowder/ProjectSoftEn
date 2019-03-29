@@ -178,7 +178,7 @@ $i = 0;
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
 
-    <div align="right">
+    <div align="center">
                 <a href="teacherShowSection.php"><button type="button" class="btn btn-primary"
                         id="addSubject">เปลี่ยน Section</button></a>
             </div>
