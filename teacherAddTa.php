@@ -89,8 +89,10 @@ teacher.tName LIKE '%พุธษดี%'");
         <label>เพิ่มผู้ช่วยสอน</label>
     </div>
     <label>รหัสผู้ช่วยสอน</label>
-    <input type="text" class="form-control" id="cNumber" placeholder="">
-  </div>
+    <input type="text" class="form-control" name="taId" id="taId" placeholder=""> <br>
+    <label>ชื่อผู้ช่วยสอน</label>
+    <input type="text" class="form-control" name="taName" id="taName" placeholder="">
+  </div> <br>
   <div align="right">
     <button type="submit" class="btn btn-primary" id="addSubject">เพิ่ม</button>
   </div>
