@@ -108,6 +108,7 @@ teacher.tName LIKE '%พุธษดี%'");
                 <a href="teacherAddStudent.php"><button type="button" class="btn btn-primary"
                         id="addSubject">เพิ่มนักศึกษา</button></a>
             </div>
+            
             <br>
             <?php
     $query = mysqli_query($conn,"select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`ta`.`taId` = '593020419-6') and (`ta`.`taId` = `subject_has_ta`.`ta_taId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`))");
@@ -176,6 +177,11 @@ $i = 0;
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
+
+    <div align="center">
+                <a href="teacherShowSection.php"><button type="button" class="btn btn-primary"
+                        id="addSubject">เปลี่ยน Section</button></a>
+            </div>
 
 </body>
 
