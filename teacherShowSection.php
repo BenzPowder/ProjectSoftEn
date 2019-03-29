@@ -145,7 +145,7 @@ $i = 0;
         echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
+        echo "<td><center><a href=\"editTA.php\"><button type=\"button\" class=\"btn btn-primary\"
         id=\" \">แก้ไข</button></a></center></td>";
         echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
         id=\" \">ลบ</button></a></center></td>";
@@ -161,7 +161,7 @@ $i = 0;
                         <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary"
                                 id="addSubject">Section 2</button></a>
                         <br> <br>
-                        
+
                     </div>
 
                     <div align="center">

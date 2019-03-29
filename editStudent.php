@@ -17,7 +17,7 @@ include "config.php";
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="script.js"></script>
-    <title>แสดง section</title>
+    <title>เพิ่มวิชา</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -26,9 +26,6 @@ include "config.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/freelancer.min.css" rel="stylesheet">
 
-    <!-- on-of button -->
-    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="js/bootstrap-toggle.min.js"></script>
 
 </head>
 
@@ -89,74 +86,43 @@ teacher.tName LIKE '%พุธษดี%'");
 
 </div> -->
     <div class="container">
-        <form action="add.php" method="post">
+        <form action="add.php" method="POST">
             <div class="form-group">
                 <div align="center">
-                    <h2><label>322371 SOFTWARE ENGINEERING วิศวกรรมซอฟต์แวร์</label></h2><br>
+                    <label>แก้ไขข้อมูลนักศึกษา</label>
                 </div>
+                <label>รหัสนักศึกษา</label>
+                <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
             </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <h4>อ.ดร.ชิตสุธา สุ่มเล็ก</h4>
-                </div>
-                <div class="col-md-2">
-                    <h4>Section 1</h4>
-                </div>
+            <div class="form-group">
+                <label>ชื่อนักศึกษา</label>
+                <input type="text" name="cName" class="form-control" id="cName" placeholder="">
+            </div>
+            <div class="form-group">
+                <label>ปีการศึกษา</label>
+                <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
+            </div>
+            <div class="form-group">
+                <label>เทอม</label>
+                <select class="form-control" name="cTerm" id="cTerm">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>เซคชัน</label>
+                <select class="form-control" name="cSection" id="cSection">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div align="center">
+                <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
             </div>
             <br>
-            <div align="right">
-                <a href="teacherAddStudent.php"><button type="button" class="btn btn-primary"
-                        id="addSubject">เพิ่มนักศึกษา</button></a>
-            </div>
-            <br>
-            <?php
-    $query = mysqli_query($conn,"select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`ta`.`taId` = '593020419-6') and (`ta`.`taId` = `subject_has_ta`.`ta_taId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`))");
- ?>
-            <table class="table table-striped" id="myTable">
-                <thead>
-                    <tr>
-                        <th>
-                            <center>รหัสนักศึกษา</center>
-                        </th>
-                        <th>
-                            <center>ชื่อนักศึกษา</center>
-                        </th>
-                        <th>
-                            <center>ปีการศึกษา</center>
-                        </th>
-                        <th>
-                            <center>เทอม</center>
-                        </th>
-                        <th>
-
-                        </th>
-                        <th>
-
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php
-$i = 0;
-       while($objResult = mysqli_fetch_array($query)){
-        $i= $i+1;
-        echo "<tr>";
-        echo "<td><center>".$objResult['taId']."</center></td>";
-        echo "<td><center>".$objResult['taName']."</center></td>";
-        echo "<td><center>".$objResult['cYear']."</center></td>";
-        echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">แก้ไข</button></a></center></td>";
-        echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
-        data-offstyle=\"danger\"></a></center></td>";
-    
-        echo "</tr>";
-      }
-      echo "</table>";
-?>
-                    <br>
         </form>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->

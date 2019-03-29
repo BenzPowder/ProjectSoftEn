@@ -52,7 +52,7 @@ a:hover {
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-           <font style="float: right;" >TEACHER</font>
+            <font style="float: right;">TEACHER</font>
             <a class="navbar-brand js-scroll-trigger" href="#page-top">รายชื่อนักศึกษา</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -95,6 +95,12 @@ a:hover {
                     <th>
                         <center>เทอม</center>
                     </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
 
                 </tr>
             </thead>
@@ -110,14 +116,18 @@ $i = 0;
         echo "<td><center><a href='teacherShowSection.php'>".$objResult['cName']."<a></center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-
+        echo "<td><center><a href=\"editSubject.php\"><button type=\"button\" class=\"btn btn-primary\"
+        id=\" \">แก้ไข</button></a></center></td>";
+        echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
+        id=\" \">ลบ</button></a></center></td>";
         echo "</tr>";
       }
       echo "</table>";
 ?>
                 </div>
                 <div class="container" align="center">
-                    <a href="addSubject.php"><input type="button" class="btn btn-primary" name="addSubject" value="เพิ่มวิชา"> </a>
+                    <a href="addSubject.php"><input type="button" class="btn btn-primary" name="addSubject"
+                            value="เพิ่มวิชา"> </a>
                 </div>
                 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
