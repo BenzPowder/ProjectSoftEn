@@ -88,19 +88,30 @@ teacher.tName LIKE '%พุธษดี%'");
   </form>
 
 </div> -->
+    <?php
+    $sql="select `teacher`.`tName` AS `tName`,`ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`teacher`.`position` AS `position`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection`,`section`.`secId` AS `secId`,`section`.`secName` AS `secName`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName` from ((((((((`teacher_has_subject_has_ta` join `teacher` on((`teacher_has_subject_has_ta`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_ta` on(((`teacher_has_subject_has_ta`.`subject_has_ta_subject_cId` = `subject_has_ta`.`subject_cId`) and (`teacher_has_subject_has_ta`.`subject_has_ta_ta_taId` = `subject_has_ta`.`ta_taId`)))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) join `subject` on(((`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`)))) join `section` on((`section`.`subject_cId` = `subject`.`cId`))) join `section_has_student` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '322371') and (`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`section`.`secName` = '1'))";
+    $query = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($query);
+ ?>
     <div class="container">
         <form action="add.php" method="post">
             <div class="form-group">
                 <div align="center">
-                    <h2><label>322371 SOFTWARE ENGINEERING วิศวกรรมซอฟต์แวร์</label></h2><br>
+                    <h2><label><?php 
+                    echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
+                    ?></label></h2><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10">
-                    <h4>อ.ดร.ชิตสุธา สุ่มเล็ก</h4>
+                    <h4><?php 
+                    echo $row["position"]."".$row["tName"];
+                    ?></h4>
                 </div>
                 <div class="col-md-2">
-                    <h4>Section 1</h4>
+                    <h4><?php 
+                    echo "Section&nbsp;&nbsp;".$row["secName"];
+                    ?></h4>
                 </div>
             </div>
             <br>
@@ -108,10 +119,10 @@ teacher.tName LIKE '%พุธษดี%'");
                 <a href="teacherAddStudent.php"><button type="button" class="btn btn-primary"
                         id="addSubject">เพิ่มนักศึกษา</button></a>
             </div>
-            
+
             <br>
             <?php
-    $query = mysqli_query($conn,"select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`ta`.`taId` = '593020419-6') and (`ta`.`taId` = `subject_has_ta`.`ta_taId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`))");
+    $query = mysqli_query($conn,$sql);
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
@@ -144,8 +155,8 @@ $i = 0;
        while($objResult = mysqli_fetch_array($query)){
         $i= $i+1;
         echo "<tr>";
-        echo "<td><center>".$objResult['taId']."</center></td>";
-        echo "<td><center>".$objResult['taName']."</center></td>";
+        echo "<td><center>".$objResult['stuId']."</center></td>";
+        echo "<td><center>".$objResult['stuName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
         echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
@@ -179,9 +190,9 @@ $i = 0;
     <script src="js/freelancer.min.js"></script>
 
     <div align="center">
-                <a href="teacherShowSection.php"><button type="button" class="btn btn-primary"
-                        id="addSubject">เปลี่ยน Section</button></a>
-            </div>
+        <a href="teacherShowSection.php"><button type="button" class="btn btn-primary" id="addSubject">เปลี่ยน
+                Section</button></a>
+    </div>
 
 </body>
 

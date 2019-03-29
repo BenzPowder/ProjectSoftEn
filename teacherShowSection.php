@@ -89,16 +89,25 @@ teacher.tName LIKE '%พุธษดี%'");
   </form>
 
 </div> -->
+    <?php
+    $sql="select `teacher`.`tName` AS `tName`,`ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`teacher`.`position` AS `position` from (((((`teacher_has_subject_has_ta` join `teacher` on((`teacher_has_subject_has_ta`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_ta` on(((`teacher_has_subject_has_ta`.`subject_has_ta_subject_cId` = `subject_has_ta`.`subject_cId`) and (`teacher_has_subject_has_ta`.`subject_has_ta_ta_taId` = `subject_has_ta`.`ta_taId`)))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) join `subject` on(((`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`)))) where ((`subject`.`cNumber` = '322371') and (`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล'))";
+    $query = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($query);
+ ?>
     <div class="container">
         <form action="add.php" method="post">
             <div class="form-group">
                 <div align="center">
-                    <h2><label>322371 SOFTWARE ENGINEERING วิศวกรรมซอฟต์แวร์</label></h2><br>
+                    <h2><label><?php 
+                    echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
+                    ?></h2><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-11">
-                    <h4>อ.ดร.ชิตสุธา สุ่มเล็ก</h4>
+                    <h4><?php 
+                    echo $row["position"]."".$row["tName"];
+                    ?></h4>
                 </div>
             </div>
             <br>
@@ -108,7 +117,7 @@ teacher.tName LIKE '%พุธษดี%'");
             </div>
             <br>
             <?php
-    $query = mysqli_query($conn,"select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`ta`.`taId` = '593020419-6') and (`ta`.`taId` = `subject_has_ta`.`ta_taId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`))");
+    $query = mysqli_query($conn,$sql);
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
