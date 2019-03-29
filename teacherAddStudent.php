@@ -89,10 +89,10 @@ teacher.tName LIKE '%พุธษดี%'");
         <label>เพิ่มนักศีกษา</label>
     </div>
     <label>รหัสนักศึกษา</label>
-    <input type="text" class="form-control" id="cNumber" placeholder="">
+    <input type="text" class="form-control" id="sNumber" placeholder="">
   </div>
   <div align="right">
-    <button type="submit" class="btn btn-primary" id="addSubject">เพิ่ม</button>
+    <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary" id="addSubject">เพิ่มนักศึกษา</button></a>
   </div>
   <br>
 </form>
