@@ -105,7 +105,7 @@ teacher.tName LIKE '%พุธษดี%'");
             </div>
             <br>
             <div align="right">
-                <a href="teacherAddTa.php"><button type="button" class="btn btn-primary"
+                <a href="teacherAddStudent.php"><button type="button" class="btn btn-primary"
                         id="addSubject">เพิ่มนักศึกษา</button></a>
             </div>
             <br>
