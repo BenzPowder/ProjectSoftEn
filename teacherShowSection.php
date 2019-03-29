@@ -100,9 +100,6 @@ teacher.tName LIKE '%พุธษดี%'");
                 <div class="col-md-11">
                     <h4>อ.ดร.ชิตสุธา สุ่มเล็ก</h4>
                 </div>
-                <div class="col-md-1"><input type="checkbox" checked data-toggle="toggle" data-onstyle="success"
-                        data-offstyle="danger">
-                </div>
             </div>
             <br>
             <div align="right">
@@ -163,8 +160,16 @@ $i = 0;
                                 id="addSubject">Section 1</button> </a><br> <br> <br>
                         <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary"
                                 id="addSubject">Section 2</button></a>
+                        <br> <br>
+                        
+                    </div>
+
+                    <div align="center">
+                        <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
+                                id="addSubject">รายวิชาทั้งหมด</button></a>
                     </div>
                     <br>
+
         </form>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
