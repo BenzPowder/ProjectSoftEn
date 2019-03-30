@@ -207,8 +207,7 @@ while($objResult = mysqli_fetch_array($query)){
     <script src="js/freelancer.min.js"></script>
 
     <div align="center">
-        <a href="teacherShowSection.php"><button type="button" class="btn btn-primary" id="addSubject">เปลี่ยน
-                Section</button></a>
+        <a href="teacherShowSection.php"><button type="button" class="btn btn-primary" id="addSubject">ย้อนกลับ</button></a>
     </div>
 
 </body>
