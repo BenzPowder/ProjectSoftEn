@@ -74,7 +74,7 @@ a:hover {
 
         <br><br>
         <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`) and (`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject`.`cSection` = '1'))");
+    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`) and (`subject_has_teacher`.`subject_cId` = `subject`.`cId`)) group by `subject`.`cNumber`");
  ?>
         <table class="table table-striped" id="myTable">
             <thead>
