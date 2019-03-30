@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$section = $_GET['section'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,29 +90,28 @@ teacher.tName LIKE '%พุธษดี%'");
   </form>
 
 </div> -->
-    <?php
-    $sql="select `teacher`.`tName` AS `tName`,`ta`.`taId` AS `taId`,`ta`.`taName` AS `taName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`teacher`.`position` AS `position`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection`,`section`.`secId` AS `secId`,`section`.`secName` AS `secName`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName` from ((((((((`teacher_has_subject_has_ta` join `teacher` on((`teacher_has_subject_has_ta`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) join `subject_has_ta` on(((`teacher_has_subject_has_ta`.`subject_has_ta_subject_cId` = `subject_has_ta`.`subject_cId`) and (`teacher_has_subject_has_ta`.`subject_has_ta_ta_taId` = `subject_has_ta`.`ta_taId`)))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) join `subject` on(((`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject_has_ta`.`subject_cId` = `subject`.`cId`)))) join `section` on((`section`.`subject_cId` = `subject`.`cId`))) join `section_has_student` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '322371') and (`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`section`.`secName` = '1'))";
+    <!-- <?php
+    $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
     $query = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($query);
- ?>
+ ?> -->
     <div class="container">
         <form action="add.php" method="post">
             <div class="form-group">
                 <div align="center">
-                    <h2><label><?php 
-                    echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
+                    <h2><label><?php
+                    // echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
                     ?></label></h2><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-10">
-                    <h4><?php 
-                    echo $row["position"]."".$row["tName"];
+                    <h4><?php
+                    // echo $row["position"]."".$row["tName"];
                     ?></h4>
                 </div>
                 <div class="col-md-2">
-                    <h4><?php 
-                    echo "Section&nbsp;&nbsp;".$row["secName"];
+                    <h4><?php
+                    // echo "Section&nbsp;&nbsp;".$row["secName"];
                     ?></h4>
                 </div>
             </div>
@@ -122,7 +123,7 @@ teacher.tName LIKE '%พุธษดี%'");
 
             <br>
             <?php
-    $query = mysqli_query($conn,$sql);
+    // $query = mysqli_query($conn,$sql);
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
@@ -152,20 +153,36 @@ teacher.tName LIKE '%พุธษดี%'");
 
                     <?php
 $i = 0;
-       while($objResult = mysqli_fetch_array($query)){
+while($objResult = mysqli_fetch_array($query)){
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['stuId']."</center></td>";
         echo "<td><center>".$objResult['stuName']."</center></td>";
+        // echo "<td><center>".$objResult['cNumber']."</center></td>";
+        // echo "<td><center>".$objResult['subject_cSection']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">แก้ไข</button></a></center></td>";
-        echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
-        data-offstyle=\"danger\"></a></center></td>";
-    
+          echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
+          id=\" \">แก้ไข</button></a></center></td>";
+          echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
+          data-offstyle=\"danger\"></a></center></td>";
+
         echo "</tr>";
       }
+      //  while($objResult = mysqli_fetch_array($query)){
+      //   $i= $i+1;
+      //   echo "<tr>";
+      //   echo "<td><center>".$objResult['stuId']."</center></td>";
+      //   echo "<td><center>".$objResult['stuName']."</center></td>";
+      //   echo "<td><center>".$objResult['cYear']."</center></td>";
+      //   echo "<td><center>".$objResult['cTerm']."</center></td>";
+      //   echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
+      //   id=\" \">แก้ไข</button></a></center></td>";
+      //   echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
+      //   data-offstyle=\"danger\"></a></center></td>";
+      //
+      //   echo "</tr>";
+      // }
       echo "</table>";
 ?>
                     <br>

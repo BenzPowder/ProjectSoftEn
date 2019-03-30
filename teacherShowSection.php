@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,14 +99,14 @@ teacher.tName LIKE '%พุธษดี%'");
         <form action="add.php" method="post">
             <div class="form-group">
                 <div align="center">
-                    <h2><label><?php 
+                    <h2><label><?php
                     echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
                     ?></h2><br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-11">
-                    <h4><?php 
+                    <h4><?php
                     echo $row["position"]."".$row["tName"];
                     ?></h4>
                 </div>
@@ -158,20 +159,25 @@ $i = 0;
         id=\" \">แก้ไข</button></a></center></td>";
         echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
         id=\" \">ลบ</button></a></center></td>";
-    
+
         echo "</tr>";
       }
       echo "</table>";
 ?>
                     <br> <br>
                     <div align="left">
-                        <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary"
-                                id="addSubject">Section 1</button> </a><br> <br> <br>
-                        <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary"
-                                id="addSubject">Section 2</button></a>
-                        <br> <br>
+    <?php
+    $query = mysqli_query($conn,"select `subject`.`cNumber` AS `cNumber`,`teacher`.`tId` AS `tId`,`subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) where ((`teacher`.`tId` = '1') and (`subject`.`cNumber` = '$subject_id'))");
+    while($objResult = mysqli_fetch_array($query)){
+      $section = $objResult['cSection'];
+      // echo $section;
+    }
+    for($i=1;$i<=$section;$i++){
 
-                    </div>
+      echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
+    }
+    ?>
+  </div>
 
                     <div align="center">
                         <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"

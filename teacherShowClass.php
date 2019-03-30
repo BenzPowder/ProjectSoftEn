@@ -74,8 +74,7 @@ a:hover {
 
         <br><br>
         <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
-    teacher.tName LIKE '%พุธษดี%'");
+    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`) and (`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject`.`cSection` = '1'))");
  ?>
         <table class="table table-striped" id="myTable">
             <thead>
@@ -112,14 +111,14 @@ $i = 0;
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['tName']."</center></td>";
-        echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center><a href='teacherShowSection.php'>".$objResult['cName']."<a></center></td>";
-        echo "<td><center>".$objResult['cYear']."</center></td>";
-        echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\"editSubject.php\"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">แก้ไข</button></a></center></td>";
-        echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">ลบ</button></a></center></td>";
+                echo "<td><center>".$objResult['cNumber']."</center></td>";
+                echo "<td><center><a href='teacherShowSection.php?id=".$objResult['cNumber']."'>".$objResult['cName']."<a></center></td>";
+                echo "<td><center>".$objResult['cYear']."</center></td>";
+                echo "<td><center>".$objResult['cTerm']."</center></td>";
+        echo "<td><center><a href='editSubject.php'><button type='button' class='btn btn-primary'
+        id='btn-edit'>แก้ไข</button></a></center></td>";
+        echo "<td><center><button type='button' class='btn btn-primary'
+        id='btn-delete' onClick='myFunction()'>ลบ</button></center></td>";
         echo "</tr>";
       }
       echo "</table>";
@@ -151,3 +150,8 @@ $i = 0;
 
 
 </html>
+<script>
+    function myFunction(){
+      alert("TEST DELETE");
+    }
+</script>
