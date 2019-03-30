@@ -103,70 +103,34 @@ teacher.tName LIKE '%พุธษดี%'");
                     echo $row["cNumber"]."&nbsp;&nbsp;&nbsp;".$row["cName"];
                     ?></h2><br>
                 </div>
+                <div align="center">
+                    <h2><label><?php
+                    echo "ปีการศึกษา&nbsp;".$row["cYear"]."&nbsp;&nbsp;&nbsp;เทอม&nbsp;".$row["cTerm"];
+                    ?></h2><br>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-11">
                     <h4><?php
-                    echo $row["position"]."".$row["tName"];
+                    echo "ผู้รับผิดชอบรายวิชา : ".$row["position"]."".$row["tName"];
                     ?></h4>
                 </div>
+                <div class="col-md-1">
+                    <a href="editSubject.php"><button type="button" class="btn btn-primary"
+                            id="addSubject">แก้ไขรายวิชา</button></a>
+                </div>
+            </div>
+            <div align="left">
+                <h4><label><?php
+                    echo "รหัสเข้าร่วมชั้นเรียน : ".$row["cYear"];
+                    ?></h4><br>
             </div>
             <br>
-            <div align="right">
-                <a href="editSubject.php"><button type="button" class="btn btn-primary"
-                        id="addSubject">แก้ไขรายวิชา</button></a>
-            </div>
             <br>
-            <?php
-    $query = mysqli_query($conn,$sql);
- ?>
-            <table class="table table-striped" id="myTable">
-                <thead>
-                    <tr>
-                        <th>
-                            <center>รหัสผู้ช่วยสอน</center>
-                        </th>
-                        <th>
-                            <center>ชื่อผู้ช่วยสอน</center>
-                        </th>
-                        <th>
-                            <center>ปีการศึกษา</center>
-                        </th>
-                        <th>
-                            <center>เทอม</center>
-                        </th>
-                        <th>
 
-                        </th>
-                        <th>
-
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php
-$i = 0;
-       while($objResult = mysqli_fetch_array($query)){
-        $i= $i+1;
-        echo "<tr>";
-        echo "<td><center>".$objResult['taId']."</center></td>";
-        echo "<td><center>".$objResult['taName']."</center></td>";
-        echo "<td><center>".$objResult['cYear']."</center></td>";
-        echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\"editTA.php\"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">แก้ไข</button></a></center></td>";
-        echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">ลบ</button></a></center></td>";
-
-        echo "</tr>";
-      }
-      echo "</table>";
-?>
-                    <br> <br>
-                    <div align="left">
-    <?php
+            <br> <br>
+            <div align="center">
+                <?php
     $query = mysqli_query($conn,"select `subject`.`cNumber` AS `cNumber`,`teacher`.`tId` AS `tId`,`subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) where ((`teacher`.`tId` = '1') and (`subject`.`cNumber` = '$subject_id'))");
     while($objResult = mysqli_fetch_array($query)){
       $section = $objResult['cSection'];
@@ -177,13 +141,16 @@ $i = 0;
       echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
     }
     ?>
-  </div>
+            </div>
 
-                    <br><div align="center">
-                        <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
-                                id="addSubject">ย้อนกลับ</button></a>
-                    </div>
-                    <br>
+            <br>
+            <br>
+            <br>
+            <div align="center">
+                <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
+                        id="addSubject">ย้อนกลับ</button></a>
+            </div>
+            <br>
 
         </form>
     </div>
