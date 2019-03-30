@@ -113,8 +113,8 @@ teacher.tName LIKE '%พุธษดี%'");
             </div>
             <br>
             <div align="right">
-                <a href="teacherAddTa.php"><button type="button" class="btn btn-primary"
-                        id="addSubject">เพิ่มผู้ช่วยสอนอาจารย์</button></a>
+                <a href="editSubject.php"><button type="button" class="btn btn-primary"
+                        id="addSubject">แก้ไขรายวิชา</button></a>
             </div>
             <br>
             <?php
@@ -179,9 +179,9 @@ $i = 0;
     ?>
   </div>
 
-                    <div align="center">
+                    <br><div align="center">
                         <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
-                                id="addSubject">รายวิชาทั้งหมด</button></a>
+                                id="addSubject">ย้อนกลับ</button></a>
                     </div>
                     <br>
 
