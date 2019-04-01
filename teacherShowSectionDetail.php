@@ -135,12 +135,12 @@ teacher.tName LIKE '%พุธษดี%'");
                         <th>
                             <center>เทอม</center>
                         </th>
-                        <th>
+                        <!-- <th>
 
                         </th>
                         <th>
 
-                        </th>
+                        </th> -->
 
                     </tr>
                 </thead>
@@ -155,10 +155,10 @@ $i = 0;
         echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
+        /*echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
         id='editTA'>แก้ไข</button></a></center></td>";
         echo "<td><center><a href=><button type='button' class='btn btn-danger'
-        id=>ลบ</button></a></center></td>";
+        id=>ลบ</button></a></center></td>";*/
 
         echo "</tr>";
       }
@@ -167,8 +167,8 @@ $i = 0;
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
-                        <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>"><button type="button" class="btn btn-primary"
-                                id="addSubject">เพิ่มนักศึกษา</button></a>
+                        <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>"><button type="button"
+                                class="btn btn-primary" id="addSubject">เพิ่มนักศึกษา</button></a>
                     </div>
 
                     <br>
@@ -192,7 +192,7 @@ $i = 0;
                                     <center>เทอม</center>
                                 </th>
                                 <th>
-                                  <center>สถานะภาพนักศึกษา</center>
+                                    <center>สถานะภาพนักศึกษา</center>
                                 </th>
                                 <th>
                                 </th>
