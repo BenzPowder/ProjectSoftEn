@@ -74,7 +74,7 @@ a:hover {
 
         <br><br>
         <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`) and (`subject_has_teacher`.`subject_cId` = `subject`.`cId`)) group by `subject`.`cNumber`");
+    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tName` = 'พุธษดี ศิริแสงตระกูล') and (`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`) and (`subject_has_teacher`.`subject_cId` = `subject`.`cId`) and (`subject`.`cSection` = '1'))");
  ?>
         <table class="table table-striped" id="myTable">
             <thead>
@@ -115,7 +115,7 @@ $i = 0;
                 echo "<td><center><a href='teacherShowSection.php?id=".$objResult['cNumber']."'>".$objResult['cName']."<a></center></td>";
                 echo "<td><center>".$objResult['cYear']."</center></td>";
                 echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href='editSubject.php'><button type='button' class='btn btn-primary'
+        echo "<td><center><a href='editSubject.php?id=".$objResult['cNumber'].'&tid=1'."'>"."<button type='button' class='btn btn-primary'
         id='btn-edit'>แก้ไข</button></a></center></td>";
         echo "<td><center><button type='button' class='btn btn-primary'
         id='btn-delete' onClick='myFunction()'>ลบ</button></center></td>";

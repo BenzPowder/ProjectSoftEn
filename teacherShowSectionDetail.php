@@ -166,14 +166,14 @@ $i = 0;
 ?>
                     <br> <br>
                     <div align="right">
-                        <a href="teacherAddStudent.php"><button type="button" class="btn btn-primary"
+                        <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>"><button type="button" class="btn btn-primary"
                                 id="addSubject">เพิ่มนักศึกษา</button></a>
                     </div>
 
                     <br>
                     <?php
-    $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
-    $query = mysqli_query($conn,$sql);
+                    $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
+                    $query = mysqli_query($conn,$sql);
  ?>
                     <table class="table table-striped" id="myTable">
                         <thead>
@@ -191,10 +191,9 @@ $i = 0;
                                     <center>เทอม</center>
                                 </th>
                                 <th>
-
+                                  <center>สถานะภาพนักศึกษา</center>
                                 </th>
                                 <th>
-
                                 </th>
 
                             </tr>
@@ -212,10 +211,10 @@ while($objResult = mysqli_fetch_array($query)){
         // echo "<td><center>".$objResult['subject_cSection']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-          echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
-          id=\" \">แก้ไข</button></a></center></td>";
           echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
           data-offstyle=\"danger\"></a></center></td>";
+          echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
+          id=\" \">แก้ไข</button></a></center></td>";
 
         echo "</tr>";
       }
@@ -259,7 +258,7 @@ while($objResult = mysqli_fetch_array($query)){
     <div align="center">
         <a href="teacherShowSection.php"><button type="button" class="btn btn-primary"
                 id="addSubject">ย้อนกลับ</button></a>
-    </div>
+    </div><br>
 
 </body>
 

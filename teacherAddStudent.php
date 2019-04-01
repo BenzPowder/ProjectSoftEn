@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$section = $_GET['section'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +94,7 @@ teacher.tName LIKE '%พุธษดี%'");
     <input type="text" class="form-control" id="sNumber" placeholder="">
   </div>
   <div align="right">
+    <a href="importStudent.php?id=id=<?=$subject_id?>&section=<?=$section?>"><button type="button" class="btn btn-warning" id="addSubject">import นักศึกษา</button></a>
     <a href="teacherShowSectionDetail.php"><button type="button" class="btn btn-primary" id="addSubject">เพิ่มนักศึกษา</button></a>
   </div>
   <br>

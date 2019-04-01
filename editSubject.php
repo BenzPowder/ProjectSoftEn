@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$teacher_id = $_GET['tid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,9 +70,10 @@ a:hover {
     <!-- Header -->
     <br><br>
     <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
-teacher.tName LIKE '%พุธษดี%'");
- ?>
+    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,min(`subject`.`cId`) AS `Min(``subject``.cId)`,max(`subject`.`cSection`) AS `Max(``subject``.cSection)`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cPassword` AS `cPassword`,`subject`.`cStatus` AS `cStatus` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where (`subject`.`cNumber` = '$subject_id') group by `teacher`.`tName`");
+    $objResult = mysqli_fetch_array($query);
+    // var_dump($max_value['max(`subject`.`cSection`)']);
+    ?>
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
       <br><h2>เพิ่มวิชา</h2><br><br>
@@ -86,46 +89,84 @@ teacher.tName LIKE '%พุธษดี%'");
 
 </div> -->
     <div class="container">
-        <form action="add.php" method="POST">
+        <form action="updateSubject.php" method="POST">
             <div class="form-group">
                 <div align="center">
                     <label>แก้ไขรายวิชา</label>
                 </div>
                 <label>รหัสวิชา</label>
-                <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
+                <input type="text" name="cNumber" class="form-control" id="cNumber" value="<?=$objResult['cNumber'] ?>">
             </div>
             <div class="form-group">
                 <label>ชื่อวิชา</label>
-                <input type="text" name="cName" class="form-control" id="cName" placeholder="">
+                <input type="text" name="cName" class="form-control" id="cName" value="<?=$objResult['cName'] ?>">
             </div>
             <div class="form-group">
                 <label>ปีการศึกษา</label>
-                <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
+                <input type="text" name="cYear" class="form-control" id="cYear" value="<?=$objResult['cYear'] ?>">
             </div>
             <div class="form-group">
                 <label>เทอม</label>
-                <select class="form-control" name="cTerm" id="cTerm">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                <select class="form-control" name="cTerm" id="cTerm" value="<?=$objResult['cTerm'] ?>">
+                    <option value="1"<?php
+                      if($objResult['cTerm']=='1'){
+                        echo "selected";
+                      }
+                    ?>>1</option>
+                    <option value="2"<?php
+                      if($objResult['cTerm']=='2'){
+                        echo "selected";
+                      }
+                    ?>>2</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>จำนวนเซคชัน</label>
-                <select class="form-control" name="cSection" id="cSection">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                <select class="form-control" name="cSection" id="cSection" value="<?=$objResult['Max(`subject`.cSection)'] ?>">
+                          <option value='1'
+                          <?php
+                            if($objResult['Max(`subject`.cSection)']=='1'){
+                              echo "selected";
+                            }
+                          ?>
+                          >1</option>
+                          <option value='2'
+                          <?php
+                            if($objResult['Max(`subject`.cSection)']=='2'){
+                              echo "selected";
+                            }
+                          ?>
+                          >2</option>
+                          <option value='3'
+                          <?php
+                            if($objResult['Max(`subject`.cSection)']=='3'){
+                              echo "selected";
+                            }
+                          ?>
+                          >3</option>
+                          <option value='4'
+                          <?php
+                            if($objResult['Max(`subject`.cSection)']=='4'){
+                              echo "selected";
+                            }
+                          ?>
+                          >4</option>
+                          <option value='5'
+                          <?php
+                            if($objResult['Max(`subject`.cSection)']=='5'){
+                              echo "selected";
+                            }
+                          ?>
+                          >5</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>รหัสเข้าร่วม</label>
-                <input type="text" class="form-control" name="cPassword" id="cPassword" placeholder="">
+                <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?=$objResult['cPassword'] ?>">
             </div>
             <div class="form-group">
                 <label>สถานะรายวิชา</label>
-                <select class="form-control" name="cStatus" id="cStatus">
+                <select class="form-control" name="cStatus" id="cStatus" value="<?=$objResult['cStatus'] ?>">
                     <option value="0">ปิด</option>
                     <option value="1">เปิด</option>
                 </select>
