@@ -1,6 +1,7 @@
 <?php
 include "config.php";
 $subject_id = $_GET['id'];
+$tid = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,8 +74,8 @@ a:hover {
     <!-- Header -->
     <br><br>
     <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
-teacher.tName LIKE '%พุธษดี%'");
+//     $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
+// teacher.tName LIKE '%พุธษดี%'");
  ?>
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
@@ -91,7 +92,7 @@ teacher.tName LIKE '%พุธษดี%'");
 
 </div> -->
     <?php
-    $sql="select `teacher`.`position` AS `position`,`teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection`,`ta`.`taName` AS `taName`,`ta`.`taId` AS `taId` from ((((`teacher` join `subject_has_teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) join `subject` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`subject`.`cNumber` = 'SC322301') and (`subject`.`cId` = `subject_has_teacher`.`subject_cId`) and (`subject_has_ta`.`ta_taId` = `ta`.`taId`)) group by `ta`.`taId`";
+    $sql="select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection`,`subject`.`cPassword` AS `cPassword`,`subject`.`cStatus` AS `cStatus`,`teacher`.`position` AS `position` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tId` = '1') and (`subject`.`cNumber` = '$subject_id'))";
     $query = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($query);
  ?>
@@ -116,7 +117,7 @@ teacher.tName LIKE '%พุธษดี%'");
                     ?></h4>
                 </div>
                 <div class="col-md-1">
-                    <a href="editSubject.php"><button type="button" class="btn btn-primary"
+                    <a href="editSubject.php?id=<?=$subject_id?>&tid=<?=$tid?>"><button type="button" class="btn btn-primary"
                             id="addSubject">แก้ไขรายวิชา</button></a>
                 </div>
             </div>

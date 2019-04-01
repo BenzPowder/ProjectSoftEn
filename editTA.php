@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$ta_id = $_GET['ta_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +70,9 @@ a:hover {
     <!-- Header -->
     <br><br>
     <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
-teacher.tName LIKE '%พุธษดี%'");
+    $sql = "select `ta`.`taId` AS `taId`,`ta`.`taName` AS `taName` from `ta` where (`ta`.`taId` = '$ta_id')";
+    $query = mysqli_query($conn,$sql);
+    $result = mysqli_fetch_array($query);
  ?>
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
@@ -92,22 +95,11 @@ teacher.tName LIKE '%พุธษดี%'");
                     <label>แก้ไขข้อมูลผู้ช่วยสอน</label>
                 </div>
                 <label>รหัสผู้ช่วยสอน</label>
-                <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
+                <input type="text" name="cNumber" class="form-control" id="cNumber" value="<?=$result['taId'] ?>">
             </div>
             <div class="form-group">
                 <label>ชื่อผู้ช่วยสอน</label>
-                <input type="text" name="cName" class="form-control" id="cName" placeholder="">
-            </div>
-            <div class="form-group">
-                <label>ปีการศึกษา</label>
-                <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
-            </div>
-            <div class="form-group">
-                <label>เทอม</label>
-                <select class="form-control" name="cTerm" id="cTerm">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <input type="text" name="cName" class="form-control" id="cName" value="<?=$result['taName'] ?>">
             </div>
             <div align="center">
                 <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">

@@ -155,16 +155,17 @@ $i = 0;
         echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href=\"editTA.php\"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">แก้ไข</button></a></center></td>";
-        echo "<td><center><a href=\" \"><button type=\"button\" class=\"btn btn-primary\"
-        id=\" \">ลบ</button></a></center></td>";
+        echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
+        id='editTA'>แก้ไข</button></a></center></td>";
+        echo "<td><center><a href=><button type='button' class='btn btn-danger'
+        id=>ลบ</button></a></center></td>";
 
         echo "</tr>";
       }
       echo "</table>";
 ?>
                     <br> <br>
+                    <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
                         <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>"><button type="button" class="btn btn-primary"
                                 id="addSubject">เพิ่มนักศึกษา</button></a>

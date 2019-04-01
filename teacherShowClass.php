@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+$tid = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,10 +116,10 @@ $i = 0;
                 echo "<td><center><a href='teacherShowSection.php?id=".$objResult['cNumber']."'>".$objResult['cName']."<a></center></td>";
                 echo "<td><center>".$objResult['cYear']."</center></td>";
                 echo "<td><center>".$objResult['cTerm']."</center></td>";
-        echo "<td><center><a href='editSubject.php?id=".$objResult['cNumber'].'&tid=1'."'>"."<button type='button' class='btn btn-primary'
+        echo "<td><center><a href='editSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
         id='btn-edit'>แก้ไข</button></a></center></td>";
-        echo "<td><center><button type='button' class='btn btn-primary'
-        id='btn-delete' onClick='myFunction()'>ลบ</button></center></td>";
+        echo "<td><center><a href='deleteSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
+        id='btn-delete'>ลบ</button></center></td>";
         echo "</tr>";
       }
       echo "</table>";
