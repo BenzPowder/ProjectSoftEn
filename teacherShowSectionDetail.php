@@ -72,6 +72,7 @@ a:hover {
 
     <!-- Header -->
     <br><br>
+
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
       <br><h2>เพิ่มวิชา</h2><br><br>
@@ -87,7 +88,7 @@ a:hover {
 
 </div> -->
     <!-- <?php
-    $sql="select `teacher`.`position` AS `position`,`teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection`,`ta`.`taName` AS `taName`,`ta`.`taId` AS `taId` from ((((`teacher` join `subject_has_teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) join `subject` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cId` = `subject_has_teacher`.`subject_cId`) and (`subject_has_ta`.`ta_taId` = `ta`.`taId`)) group by `ta`.`taId`";
+    $sql="select `teacher`.`position` AS `position`,`teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`teacher` join `subject_has_teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) join `subject` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
     $query = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($query);
  ?> -->
@@ -114,7 +115,8 @@ a:hover {
             </div>
             <br>
             <?php
-    $query = mysqli_query($conn,$sql);
+    $sql2="select `teacher`.`position` AS `position`,`teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection`,`ta`.`taId` AS `taId`,`ta`.`taName` AS `taName` from ((((`teacher` join `subject_has_teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) join `subject` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `subject_has_ta` on((`subject_has_ta`.`subject_cId` = `subject`.`cId`))) join `ta` on((`subject_has_ta`.`ta_taId` = `ta`.`taId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section')) group by `ta`.`taId`";
+    $query2 = mysqli_query($conn,$sql2);
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
@@ -131,7 +133,9 @@ a:hover {
                         <th>
                             <center>เทอม</center>
                         </th>
+                        <!-- <th>
 
+                        </th> -->
                         <th>
 
                         </th>
@@ -142,7 +146,7 @@ a:hover {
 
                     <?php
 $i = 0;
-       while($objResult = mysqli_fetch_array($query)){
+       while($objResult = mysqli_fetch_array($query2)){
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['taId']."</center></td>";
@@ -151,8 +155,8 @@ $i = 0;
         echo "<td><center>".$objResult['cTerm']."</center></td>";
         // echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
         // id='editTA'>แก้ไข</button></a></center></td>";
-        echo "<td><center><a href='deleteTa.php?id=".$subject_id.'&section='.$section.'&taId='.$objResult['taId']."'>"."<button type='button' class='btn btn-danger'
-        id='delete-ta'>ลบ</button></a></center></td>";
+        echo "<td><center><a href=><button type='button' class='btn btn-danger'
+        id=>ลบ</button></a></center></td>";
 
         echo "</tr>";
       }
@@ -167,11 +171,8 @@ $i = 0;
 
                     <br>
                     <?php
-                    $sql = "select `student`.`stuName` AS `stuName`,`student`.`stuId` AS `stuId`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cSection` AS `cSection` from ((`subject_has_student` join `subject` on(((`subject_has_student`.`subject_cId` = `subject`.`cId`) and (`subject_has_student`.`subject_cSection` = `subject`.`cSection`)))) join `student` on((`student`.`stuId` = `subject_has_student`.`student_stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
-                    // echo $sql;
+                    $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
                     $query = mysqli_query($conn,$sql);
-                    $result = mysqli_fetch_array($query);
-                    // var_dump($query);
  ?>
                     <table class="table table-striped" id="myTable">
                         <thead>
@@ -201,7 +202,6 @@ $i = 0;
                             <?php
 $i = 0;
 while($objResult = mysqli_fetch_array($query)){
-        $stuId = $objResult['stuId'];
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['stuId']."</center></td>";
@@ -212,8 +212,8 @@ while($objResult = mysqli_fetch_array($query)){
         echo "<td><center>".$objResult['cTerm']."</center></td>";
           echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
           data-offstyle=\"danger\"></a></center></td>";
-          echo "<td><center><a href='editStudent.php?id=$subject_id&section=$section&stuId=$stuId'><button type='button' class='btn btn-primary'
-          id='edit-student'>แก้ไข</button></a></center></td>";
+          echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
+          id=\" \">แก้ไข</button></a></center></td>";
 
         echo "</tr>";
       }
