@@ -137,10 +137,10 @@ teacher.tName LIKE '%พุธษดี%'");
                         </th>
                         <!-- <th>
 
-                        </th>
+                        </th> -->
                         <th>
 
-                        </th> -->
+                        </th>
 
                     </tr>
                 </thead>
@@ -155,10 +155,10 @@ $i = 0;
         echo "<td><center>".$objResult['taName']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
-        /*echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
-        id='editTA'>แก้ไข</button></a></center></td>";
+        // echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
+        // id='editTA'>แก้ไข</button></a></center></td>";
         echo "<td><center><a href=><button type='button' class='btn btn-danger'
-        id=>ลบ</button></a></center></td>";*/
+        id=>ลบ</button></a></center></td>";
 
         echo "</tr>";
       }
@@ -257,8 +257,8 @@ while($objResult = mysqli_fetch_array($query)){
     <script src="js/freelancer.min.js"></script>
 
     <div align="center">
-        <div align="center"><a href=javascript:history.back(1)  class="btn btn-primary" >ย้อนกลับ</th></a>
-    </div><br>
+        <div align="center"><a href=javascript:history.back(1) class="btn btn-primary">ย้อนกลับ</th></a>
+        </div><br>
 
 </body>
 
