@@ -148,8 +148,7 @@ a:hover {
             <br>
             <br>
             <div align="center">
-                <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
-                        id="addSubject">ย้อนกลับ</button></a>
+                <div align="center"><a href=javascript:history.back(1)  class="btn btn-primary" >ย้อนกลับ</th></a>
             </div>
             <br>
 
