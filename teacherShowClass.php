@@ -121,7 +121,8 @@ $i = 0;
         id='btn-edit'>แก้ไข</button></a></center></td>";
         // echo "<td><center><a href='deleteSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
         // id='btn-delete'>ลบ</button></center></td>";
-        echo "<td> <a href='deleteSubject.php?id=$cid&tid=$tid' onClick=\"return confirm('are you sure you want to delete??');\"><center>Delete</center></a>";
+        echo "<td> <a href='deleteSubject.php?id=$cid&tid=$tid' onClick=\"return confirm('are you sure you want to delete??');\"><center class='btn btn-danger'
+        id='btn-edit'>ลบ</center></a>";
         echo "</tr>";
       }
       echo "</table>";
