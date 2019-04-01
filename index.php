@@ -3,7 +3,8 @@ include "config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,25 +21,28 @@ include "config.php";
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/freelancer.min.css" rel="stylesheet">
 
 
-  </head>
+</head>
 
-  <body background="bott2bg.jpg">
- </body>
+<body background="bott2bg.jpg">
+</body>
 
 <style type="text/css">
- a,span {
+a,
+span {
     font-family: BoonJot, Helvetica, sans-serif;
-  }
-  a:hover {
-      text-decoration: none;
-  }
+}
 
-  .box {
+a:hover {
+    text-decoration: none;
+}
+
+.box {
     width: auto;
     height: auto;
     border-radius: 8px;
@@ -48,27 +52,26 @@ include "config.php";
     font-family: Arial, Helvetica, sans-serif;
     line-height: 20px;
 }
-
-
 </style>
-  <body id="page-top" >
+
+<body id="page-top">
 
 
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-      <div class="container">
-        <a class="" href="#page-top">ระบบเช็คชื่อ</a>
-      </div>
+        <div class="container">
+            <a class="" href="#page-top">ระบบเช็คชื่อ</a>
+        </div>
     </nav>
 
     <!-- Header -->
-<br><br>
-<?php
+    <br><br>
+    <?php
     $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
 teacher.tName LIKE '%พุธษดี%'");
  ?>
-<!-- <div class="box" align="center">
+    <!-- <div class="box" align="center">
   <form action="add.php" method="post">
       <br><h2>เพิ่มวิชา</h2><br><br>
       รหัสวิชา : <input type="text" name="cNumber" id="cNumber"><br><br>
@@ -82,17 +85,18 @@ teacher.tName LIKE '%พุธษดี%'");
   </form>
 
 </div> -->
-<div class="container">
-  <form action="add.php" method="post">
-     
-  <div align="center">
-     <a href="teacherShowClass.php"><button type="button" class="btn btn-primary" id="teacher">teacher</button></a>
-    <a href="taShowClass.php"><button type="button" class="btn btn-primary" id="ta">ta</button></a>
-    <a href="StudentShowClass.php"><button type="button" class="btn btn-primary" id="student">student</button></a>
-  </div>
-  <br>
-</form>
-</div>
+    <div class="container">
+        <form action="add.php" method="post">
+
+            <div align="center">
+                <a href="teacherShowClass.php"><button type="button" class="btn btn-primary"
+                        id="teacher">teacher</button></a>
+                <!-- <a href="taShowClass.php"><button type="button" class="btn btn-primary" id="ta">ta</button></a>
+    <a href="StudentShowClass.php"><button type="button" class="btn btn-primary" id="student">student</button></a> -->
+            </div>
+            <br>
+        </form>
+    </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
 
@@ -111,7 +115,7 @@ teacher.tName LIKE '%พุธษดี%'");
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
 
-  </body>
+</body>
 
 
 </html>
