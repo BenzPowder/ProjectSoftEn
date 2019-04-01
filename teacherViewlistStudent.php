@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$section = $_GET['section'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,22 +62,19 @@ include "config.php";
     <!-- Header -->
      <section id="training">
 
-	 <!-- <div class="container">
-        <br><br><h2 class="text-center" ><span>ค้นหา</span></h2><br>
-         <center><div class="col-lg-3 col-sm-offset-2 col-xs-offset-1 ">
-    <input type="search" id="myInput" onkeyup="myFunction()" class="form-control" style="text-align: center;" placeholder="ค้นหา">
-</div></center> -->
 
 <br><br>
 <?php
-    $query = mysqli_query($conn,"select `student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`section`.`secName` AS `secName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from (((`section_has_student` join `student` on((`section_has_student`.`student_stuId` = `student`.`stuId`))) join `section` on(((`section_has_student`.`section_secId` = `section`.`secId`) and (`section_has_student`.`section_subject_cId` = `section`.`subject_cId`)))) join `subject` on((`section`.`subject_cId` = `subject`.`cId`))) where ((`subject`.`cNumber` = '322371') and (`subject`.`cYear` = 2561) and (`subject`.`cTerm` = 2))");
-
-    $result = mysqli_fetch_array($query);
-
+$query_cId = "select `subject`.`cId` AS `cId` from `subject` where (`subject`.`cNumber` = '$subject_id')";
+$result = mysqli_query($conn,$query_cId);
+$row = mysqli_fetch_assoc($result);
+$cId = $row['cId'];
+    $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cId` = '$cId') and (`subject`.`cSection` = '$section'))";
+    $query = mysqli_query($conn,$sql);
  ?>
   <table class="table table-striped" id="myTable">
     <div align="center">
-        <h3><strong>รายชื่อนักศึกษา วิชา : <?php echo $result['cNumber'] ?> ปีการศึกษา <?php echo $result['cYear'] ?> เทอม <?php echo $result['cTerm'] ?></strong></h3>
+        <h3><strong>รายชื่อนักศึกษา วิชา : <?php echo $subject_id ?> ปีการศึกษา <?php echo 2562 ?> เทอม <?php 1 ?></strong></h3>
     </div><br>
     <thead>
       <tr>
@@ -85,6 +84,8 @@ include "config.php";
         <th><center>เซคชัน</center></th>
         <th><center>ปีการศึกษา</center></th>
         <th><center>เทอม</center></th>
+        <th><center></center></th>
+        <th><center>สถานะภาพนักศึกษา</center></th>
 
       </tr>
     </thead>
@@ -98,7 +99,7 @@ $i = 0;
         echo "<td><center>".$objResult['stuId']."</center></td>";
         echo "<td><center>".$objResult['stuName']."</center></td>";
         echo "<td><center>".$objResult['cNumber']."</center></td>";
-        echo "<td><center>".$objResult['secName']."</center></td>";
+        echo "<td><center>".$objResult['subject_cSection']."</center></td>";
         echo "<td><center>".$objResult['cYear']."</center></td>";
         echo "<td><center>".$objResult['cTerm']."</center></td>";
 
@@ -108,7 +109,7 @@ $i = 0;
 ?>
 </div><br>
     <div class="container" align="center">
-    <a href="taAddStudent.php">เพิ่มนักศึกษา</a>
+    <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>">เพิ่มนักศึกษา</a>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 

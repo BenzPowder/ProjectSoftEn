@@ -59,6 +59,16 @@
 
   }
 
+
+  //echo '<pre>';
+
+  //var_dump($namedDataArray);
+
+  //echo '</pre><hr />';
+
+
+  //*** Connect to MySQL Database ***//
+
   $i = 0;
   foreach ($namedDataArray as $result)
   	{
@@ -66,16 +76,25 @@
   	}
     foreach ($arrayName as $data) {
       for($j=0;$j<sizeof($data);$j++){
-
+        // $strSQL = "";
+        // $strSQL .= "INSERT INTO student ";
+    		// $strSQL .= "VALUES ";
+        // $strSQL .= "('".$data[$j]['stuId'];
+        //
+        // $strSQL .= "','".$data[$j]['stuName']."'); ";
+        //
+        // $result = mysqli_query($conn,$strSQL);
+        // $query = mysqli_query($conn,"select `subject`.`cSection` AS `cSection`,`section_has_student`.`student_stuId` AS `student_stuId`,`subject`.`cId` AS `cId` from (`section_has_student` join `subject` on(((`subject`.`cId` = `section_has_student`.`section_subject_cId`) and (`subject`.`cSection` = `section_has_student`.`section_secId`)))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))");
         $query = mysqli_query($conn,"select `subject`.`cId` AS `cId` from `subject` where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))");
         while($objResult = mysqli_fetch_array($query)){
           $array =  (array) $objResult['cId'];
         }
         $stuId = $data[$j]['stuId'];
         $updateSectionHasStudent = "INSERT INTO subject_has_student VALUES ('$array[0]','$section','$stuId')";
-
+        // echo $updateSectionHasStudent."<br>";
         $resultUpdate = mysqli_query($conn,$updateSectionHasStudent);
-
+        // // // echo $strSQL."<br>";
+        // // // echo $result;
         if($resultUpdate){
           echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherViewlistStudent.php?id=$subject_id&section=$section';</script>";
         }else{
