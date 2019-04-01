@@ -96,7 +96,7 @@
         // // // echo $strSQL."<br>";
         // // // echo $result;
         if($resultUpdate){
-          echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherViewlistStudent.php?id=$subject_id&section=$section';</script>";
+          echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section';</script>";
         }else{
           die('Could not enter data: ' . mysqli_error($conn));
         }
