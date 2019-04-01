@@ -1,5 +1,8 @@
 <?php
 include "config.php";
+$subject_id = $_GET['id'];
+$section = $_GET['section'];
+$stuId = $_GET['stuId'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,23 +71,10 @@ a:hover {
     <!-- Header -->
     <br><br>
     <?php
-    $query = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`)))WHERE
-teacher.tName LIKE '%พุธษดี%'");
+    $sql = "select `subject`.`cSection` AS `cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName` from ((`subject` join `subject_has_student` on(((`subject_has_student`.`subject_cId` = `subject`.`cId`) and (`subject_has_student`.`subject_cSection` = `subject`.`cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where (`student`.`stuId` = '$stuId')";
+    $query = mysqli_query($conn,$sql);
+    $result = mysqli_fetch_array($query);
  ?>
-    <!-- <div class="box" align="center">
-  <form action="add.php" method="post">
-      <br><h2>เพิ่มวิชา</h2><br><br>
-      รหัสวิชา : <input type="text" name="cNumber" id="cNumber"><br><br>
-      ชื่อวิชา : <input type="text" name="cName" id="cName"><br><br>
-      ปีการศึกษา : <input type="text" name="cYear" id="cYear"><br><br>
-      เทอม : <input type="text" name="cTerm" id="cTerm"><br><br>
-      เซคชัน : <input type="text" name="cSection" id="cSection"><br><br>
-      รหัสเข้าร่วม : <input type="text" name="cPassword" id="cPassword"><br><br>
-      สถานะรายวิชา : <input type="text" name="cStatus" id="cStatus"><br><br>
-      <input type="submit" value="บันทึก" id="save"><br><br>
-  </form>
-
-</div> -->
     <div class="container">
         <form action="add.php" method="POST">
             <div class="form-group">
@@ -92,31 +82,50 @@ teacher.tName LIKE '%พุธษดี%'");
                     <label>แก้ไขข้อมูลนักศึกษา</label>
                 </div>
                 <label>รหัสนักศึกษา</label>
-                <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
+                <input type="text" name="cNumber" class="form-control" id="cNumber" value="<?=$result['stuId'] ?>">
             </div>
             <div class="form-group">
                 <label>ชื่อนักศึกษา</label>
-                <input type="text" name="cName" class="form-control" id="cName" placeholder="">
-            </div>
-            <div class="form-group">
-                <label>ปีการศึกษา</label>
-                <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
-            </div>
-            <div class="form-group">
-                <label>เทอม</label>
-                <select class="form-control" name="cTerm" id="cTerm">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                <input type="text" name="cName" class="form-control" id="cName" value="<?=$result['stuName'] ?>">
             </div>
             <div class="form-group">
                 <label>เซคชัน</label>
                 <select class="form-control" name="cSection" id="cSection">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1"
+                    <?php
+                      if($result['cSection']=='1'){
+                        echo "selected";
+                      }
+                    ?>
+                    >1</option>
+                    <option value="2"
+                    <?php
+                      if($result['cSection']=='2'){
+                        echo "selected";
+                      }
+                    ?>
+                    >2</option>
+                    <option value="3"
+                    <?php
+                      if($result['cSection']=='3'){
+                        echo "selected";
+                      }
+                    ?>
+                    >3</option>
+                    <option value="4"
+                    <?php
+                      if($result['cSection']=='4'){
+                        echo "selected";
+                      }
+                    ?>
+                    >4</option>
+                    <option value="5"
+                    <?php
+                      if($result['cSection']=='5'){
+                        echo "selected";
+                      }
+                    ?>
+                    >5</option>
                 </select>
             </div>
             <div align="center">

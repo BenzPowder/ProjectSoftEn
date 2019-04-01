@@ -109,6 +109,7 @@ a:hover {
                 <?php
 $i = 0;
        while($objResult = mysqli_fetch_array($query)){
+         $cid = $objResult['cNumber'];
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['tName']."</center></td>";
@@ -118,8 +119,9 @@ $i = 0;
                 echo "<td><center>".$objResult['cTerm']."</center></td>";
         echo "<td><center><a href='editSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
         id='btn-edit'>แก้ไข</button></a></center></td>";
-        echo "<td><center><a href='deleteSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
-        id='btn-delete'>ลบ</button></center></td>";
+        // echo "<td><center><a href='deleteSubject.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-primary'
+        // id='btn-delete'>ลบ</button></center></td>";
+        echo "<td> <a href='deleteSubject.php?id=$cid&tid=$tid' onClick=\"return confirm('are you sure you want to delete??');\"><center>Delete</center></a>";
         echo "</tr>";
       }
       echo "</table>";
@@ -151,8 +153,3 @@ $i = 0;
 
 
 </html>
-<script>
-    function myFunction(){
-      alert("TEST DELETE");
-    }
-</script>

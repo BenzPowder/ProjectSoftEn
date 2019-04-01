@@ -135,10 +135,8 @@ a:hover {
     $query = mysqli_query($conn,"select `subject`.`cNumber` AS `cNumber`,`teacher`.`tId` AS `tId`,`subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`teacher`.`tId` = `subject_has_teacher`.`teacher_tId`))) where ((`teacher`.`tId` = '1') and (`subject`.`cNumber` = '$subject_id'))");
     while($objResult = mysqli_fetch_array($query)){
       $section = $objResult['cSection'];
-      // echo $section;
     }
     for($i=1;$i<=$section;$i++){
-
       echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
     }
     ?>
