@@ -165,8 +165,8 @@ $i = 0;
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
-                        <a href="teacherAddStudent.php?id=<?=$subject_id?>&section=<?=$section?>"><button type="button"
-                                class="btn btn-primary" id="addSubject">เพิ่มนักศึกษา</button></a>
+                        <button type="button" class="btn btn-warning" id="importStudent"
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
                     </div>
 
                     <br>
