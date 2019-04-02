@@ -2,6 +2,7 @@
 include "config.php";
 $subject_id = $_GET['id'];
 $section = $_GET['section'];
+$tid = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
