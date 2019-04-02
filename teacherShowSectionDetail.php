@@ -1,3 +1,4 @@
+
 <?php
 include "config.php";
 $subject_id = $_GET['id'];
@@ -73,6 +74,8 @@ a:hover {
     <!-- Header -->
     <br><br>
 
+
+
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
       <br><h2>เพิ่มวิชา</h2><br><br>
@@ -92,6 +95,8 @@ a:hover {
     $query = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($query);
  ?> -->
+
+
     <div class="container">
         <form action="add.php" method="post">
             <div class="form-group">
@@ -101,6 +106,8 @@ a:hover {
                     ?></label></h2><br>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-10">
                     <h4><?php
@@ -144,6 +151,12 @@ a:hover {
                 </thead>
                 <tbody>
 
+                    <div align="right">
+                        <button type="button" class="btn btn-danger" id="importStudent"
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">ลบ Section</button>
+                            <br><br>
+                    </div>
+
                     <?php
 $i = 0;
        while($objResult = mysqli_fetch_array($query2)){
@@ -162,6 +175,8 @@ $i = 0;
       }
       echo "</table>";
 ?>
+
+
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
@@ -232,7 +247,11 @@ while($objResult = mysqli_fetch_array($query)){
       //   echo "</tr>";
       // }
       echo "</table>";
+
+
 ?>
+<br><br>
+
                             <br>
         </form>
     </div>
@@ -257,6 +276,8 @@ while($objResult = mysqli_fetch_array($query)){
     <div align="center">
         <div align="center"><a href=javascript:history.back(1) class="btn btn-primary">ย้อนกลับ</th></a>
         </div><br>
+
+
 
 </body>
 
