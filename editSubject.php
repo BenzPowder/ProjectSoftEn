@@ -2,6 +2,12 @@
 include "config.php";
 $subject_id = $_GET['id'];
 $teacher_id = $_GET['tid'];
+$max = mysqli_query($conn,"select `teacher`.`tName` AS `tName`,min(`subject`.`cId`) AS `Min(``subject``.cId)`,max(`subject`.`cSection`) AS `Max(``subject``.cSection)` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where (`subject`.`cNumber` = '$subject_id') group by `teacher`.`tName`");
+// $query = mysqli_query($conn,"select `subject`.`cId` AS `cId` from `subject` where ((`subject`.`cNumber` = '$cNumber') and (`subject`.`cSection` = '$cSection'))");
+// $result = mysqli_fetch_array($query);
+$resultmax = mysqli_fetch_array($max);
+$min_subject_id = $resultmax['Min(`subject`.cId)'];
+$max_subject_sec = $resultmax['Max(`subject`.cSection)'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,6 +166,8 @@ a:hover {
                           >5</option>
                 </select>
                 <input type="hidden" name="cSection" value="<?=$objResult['Max(`subject`.cSection)']?>" />
+                <input type="hidden" name="min_subject_id" value="<?=$min_subject_id?>" />
+                <input type="hidden" name="max_subject_sec" value="<?=$max_subject_sec?>" />
             </div>
             <div class="form-group">
                 <label>รหัสเข้าร่วม</label>
@@ -168,8 +176,20 @@ a:hover {
             <div class="form-group">
                 <label>สถานะรายวิชา</label>
                 <select class="form-control" name="cStatus" id="cStatus" value="<?=$objResult['cStatus'] ?>">
-                    <option value="0">ปิด</option>
-                    <option value="1">เปิด</option>
+                    <option value="0"
+                    <?php
+                      if($objResult['cStatus']=='0'){
+                        echo "selected";
+                      }
+                    ?>
+                    >ปิด</option>
+                    <option value="1"
+                    <?php
+                      if($objResult['cStatus']=='1'){
+                        echo "selected";
+                      }
+                    ?>
+                    >เปิด</option>
                 </select>
             </div>
             <div align="center">
