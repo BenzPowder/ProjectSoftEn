@@ -139,6 +139,7 @@ a:hover {
     for($i=1;$i<=$section;$i++){
       echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
     }
+    echo "<a href='addSection.php?id=".$subject_id."&tid=".$tid."'onClick=\"return confirm('add section?');\">"."<button type='button' class='btn btn-success' id='addSection'>เพิ่มเซคชั่น"."</button></a>"
     ?>
             </div>
 
