@@ -156,7 +156,7 @@ $i = 0;
         echo "<td><center>".$objResult['cTerm']."</center></td>";
         // echo "<td><center><a href='editTA.php?id=".$objResult['cNumber']."&ta_id=".$objResult['taId']."'>"."<button type='button' class='btn btn-primary'
         // id='editTA'>แก้ไข</button></a></center></td>";
-        echo "<td><center><a href='deleteTa.php?id=".$objResult['cNumber'].'&tid='.$tid."'>"."<button type='button' class='btn btn-danger'
+        echo "<td><center><a href='deleteTa.php?id=".$subject_id.'&section='.$section.'&taId='.$objResult['taId']."'onClick=\"return confirm('are you sure you want to delete??');\">"."<button type='button' class='btn btn-danger'
         id='deleteTA'>ลบ</button></a></center></td>";
 
         echo "</tr>";
