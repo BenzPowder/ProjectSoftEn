@@ -17,15 +17,24 @@ if(isset($_POST['submit'])){
     $query = mysqli_query($conn,"select `subject`.`cId` AS `cId` from `subject` where ((`subject`.`cNumber` = '$cNumber') and (`subject`.`cSection` = '$cSection'))");
     $result = mysqli_fetch_array($query);
     $resultmax = mysqli_fetch_array($max);
-    $cId = $result['cId'];
+    // $cId = $result['cId'];
     $min_subject_id = $resultmax['Min(`subject`.cId)'];
     $max_subject_sec = $resultmax['Max(`subject`.cSection)'];
     // echo $cId."<br>";
     // echo ($cId-$cSection+1)."<br>";
     // echo $min_subject_id."<br>";
     // echo $max_subject_sec."<br>";
-    for($i=$min_subject_id;$i<($cId+$max_subject_sec-2);$i++){
-      echo $i."<br>";
+    // echo "max sec = ".$max_subject_sec."<br>";
+    // echo "start id = ".$cId."<br>";
+    // echo "min subject id = ".$min_subject_id."<br>";
+    for($i=$min_subject_id;$i<=($min_subject_id+$max_subject_sec-1);$i++){
+        $sql = "UPDATE subject SET cNumber='$cNumber', cName='$cName', cYear='$cYear', cTerm='$cTerm', cPassword='$cPassword', cStatus='$cStatus' WHERE cId='$i'";
+        $query = mysqli_query($conn,$sql);
+    }
+    if($query){
+      echo "<script>alert('อัพเดทเรียบร้อย'); location.href='index.php';</script>";
+    }else{
+      die('Could not enter data: ' . mysqli_error($conn));
     }
 
 

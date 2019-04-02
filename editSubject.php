@@ -122,7 +122,7 @@ a:hover {
             </div>
             <div class="form-group">
                 <label>จำนวนเซคชัน</label>
-                <select class="form-control" name="cSection" id="cSection" value="<?=$objResult['Max(`subject`.cSection)'] ?>">
+                <select class="form-control" name="cSection" id="cSection" value="<?=$objResult['Max(`subject`.cSection)'] ?>" disabled="disabled">
                           <option value='1'
                           <?php
                             if($objResult['Max(`subject`.cSection)']=='1'){
@@ -159,6 +159,7 @@ a:hover {
                           ?>
                           >5</option>
                 </select>
+                <input type="hidden" name="cSection" value="<?=$objResult['Max(`subject`.cSection)']?>" />
             </div>
             <div class="form-group">
                 <label>รหัสเข้าร่วม</label>
