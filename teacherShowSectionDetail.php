@@ -189,7 +189,7 @@ $i = 0;
                         <button type="button" class="btn btn-warning" id="importStudent"
                             onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import file</button>
                         <button type="button" class="btn btn-primary" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มนักศึกษา</button>
+                            onclick="window.location.href='addStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มนักศึกษา</button>
                     </div>
 
                     <br>
