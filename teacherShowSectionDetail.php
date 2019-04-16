@@ -2,6 +2,7 @@
 include "config.php";
 $subject_id = $_GET['id'];
 $section = $_GET['section'];
+$year = $_GET['year'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,8 +74,6 @@ a:hover {
     <!-- Header -->
     <br><br>
 
-
-
     <!-- <div class="box" align="center">
   <form action="add.php" method="post">
       <br><h2>เพิ่มวิชา</h2><br><br>
@@ -94,8 +93,6 @@ a:hover {
     $query = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($query);
  ?> -->
-
-
     <div class="container">
         <form action="add.php" method="post">
             <div class="form-group">
@@ -105,8 +102,6 @@ a:hover {
                     ?></label></h2><br>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-10">
                     <h4><?php
@@ -126,6 +121,12 @@ a:hover {
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
+                  <div align="right">
+                        <button type="button" class="btn btn-danger" id="deleteSection" onclick="deleteSection(<?=$section?>)">
+                          ลบ Section
+                          </button>
+                            <br><br>
+                    </div>
                     <tr>
                         <th>
                             <center>รหัสผู้ช่วยสอน</center>
@@ -139,9 +140,9 @@ a:hover {
                         <th>
                             <center>เทอม</center>
                         </th>
-                        <th>
+                        <!-- <th>
 
-                        </th>
+                        </th> -->
                         <!-- <th>
 
                         </th> -->
@@ -149,15 +150,6 @@ a:hover {
                     </tr>
                 </thead>
                 <tbody>
-
-                    <div align="right">
-                        <button type="button" class="btn btn-danger" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">ลบ
-                            Section</button>
-                        <br><br>
-                    </div>
-
-
 
                     <?php
 $i = 0;
@@ -177,20 +169,17 @@ $i = 0;
       }
       echo "</table>";
 ?>
-
                     <div align="center">
-                        <button type="button" class="btn btn-primary" id="importStudent"
-                            onclick="window.location.href='AddTA.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มผู้ช่วยสอนอาจารย์</button>
-                        <br><br>
+                        <button type="button" class="btn btn-primary" id="AddTa" onclick="addTA()">เพิ่มผู้ช่วยสอนอาจารย์</button>
+                            <br><br>
                     </div>
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
                         <button type="button" class="btn btn-warning" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import
-                            file</button>
-                        <button type="button" class="btn btn-primary" id="importStudent"
-                            onclick="window.location.href='addStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มนักศึกษา</button>
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
+                        <button type="button" class="btn btn-primary" id="AddStudent"
+                            onclick="addStudent()">เพิ่มนักศึกษา</button>
                     </div>
 
                     <br>
@@ -226,6 +215,7 @@ $i = 0;
                             <?php
 $i = 0;
 while($objResult = mysqli_fetch_array($query)){
+  $stu_id = $objResult['stuId'];
         $i= $i+1;
         echo "<tr>";
         echo "<td><center>".$objResult['stuId']."</center></td>";
@@ -236,8 +226,8 @@ while($objResult = mysqli_fetch_array($query)){
         echo "<td><center>".$objResult['cTerm']."</center></td>";
           echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
           data-offstyle=\"danger\"></a></center></td>";
-          echo "<td><center><a href=\"editStudent.php\"><button type=\"button\" class=\"btn btn-primary\"
-          id=\" \">แก้ไข</button></a></center></td>";
+          echo "<td><center><a href='editStudent.php?id=".$subject_id.'&section='.$section."&stuId=".$stu_id."'>"."<button type='button' class='btn btn-primary'
+          id='edit-student-section'>แก้ไข</button></a></center></td>";
 
         echo "</tr>";
       }
@@ -256,11 +246,7 @@ while($objResult = mysqli_fetch_array($query)){
       //   echo "</tr>";
       // }
       echo "</table>";
-
-
 ?>
-                            <br><br>
-
                             <br>
         </form>
     </div>
@@ -286,9 +272,25 @@ while($objResult = mysqli_fetch_array($query)){
         <div align="center"><a href=javascript:history.back(1) class="btn btn-primary">ย้อนกลับ</th></a>
         </div><br>
 
-
-
 </body>
-
-
 </html>
+<script>
+  function deleteSection(section){
+    if(section!=1){
+      if(confirm('are you sure you want to delete??')==true){
+        window.location.href="deleteSection.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>";
+      }
+  }else{
+    alert("ไม่สามารถลบเซคชัน <?=$section?> ได้");
+    }
+  }
+
+  function addTA(){
+      window.location.href='AddTA.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
+  }
+
+  function addStudent(){
+      window.location.href='addStudent.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
+  }
+
+</script>

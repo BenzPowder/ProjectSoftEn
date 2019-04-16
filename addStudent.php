@@ -2,7 +2,8 @@
 include "config.php";
   $subject_id = $_GET['id'];
   $section = $_GET['section'];
-  
+  $year = $_GET['year'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,14 +112,17 @@ function fncSubmit()
                     <label>เพิ่มข้อมูลนักศึกษา</label>
                 </div>
                 <label>รหัสนักศึกษา</label>
-                <input type="text" name="sNumber" class="form-control" id="sNumber">
+                <input type="text" name="sNumber" class="form-control" id="sNumber" placeholder="593020466-7">
             </div>
             <div class="form-group">
                 <label>ชื่อนักศึกษา</label>
-                <input type="text" name="sName"  class="form-control" id="sName" >
+                <input type="text" name="sName"  class="form-control" id="sName" placeholder="นายทดสอบ ทดสอบ" >
             </div>
             <div align="center">
-                <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
+              <input type="hidden" name="id" value="<?=$subject_id ?>">
+              <input type="hidden" name="section" value="<?=$section ?>">
+              <input type="hidden" name="year" value="<?=$year ?>">
+              <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
             </div>
             <br>
         </form>
@@ -143,6 +147,4 @@ function fncSubmit()
     <script src="js/freelancer.min.js"></script>
 
 </body>
-
-
 </html>
