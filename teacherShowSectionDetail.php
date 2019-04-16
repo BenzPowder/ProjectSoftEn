@@ -157,6 +157,8 @@ a:hover {
                             <br><br>
                     </div>
 
+                    
+
                     <?php
 $i = 0;
        while($objResult = mysqli_fetch_array($query2)){
@@ -176,12 +178,18 @@ $i = 0;
       echo "</table>";
 ?>
 
-
+                    <div align="center">
+                        <button type="button" class="btn btn-primary" id="importStudent"
+                            onclick="window.location.href='AddTA.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มผู้ช่วยสอนอาจารย์</button>
+                            <br><br>
+                    </div>
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
                         <button type="button" class="btn btn-warning" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import file</button>
+                        <button type="button" class="btn btn-primary" id="importStudent"
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มนักศึกษา</button>
                     </div>
 
                     <br>

@@ -94,8 +94,37 @@ a:hover {
   </form>
 
 </div> -->
+<html>
+<script type="text/javascript">
+function fncSubmit()
+{
+    if(document.getElementById('cNumber').value == "")
+    {
+        alert('กรุณากรอกรหัสวิชา Ex.322444');
+        return false;
+    }
+
+    if(document.getElementById('cName').value == "")
+    {
+        alert('กรุณากรอกชื่อวิชา Ex.Data Science');
+        return false;
+    }
+
+    if(document.getElementById('cYear').value == "")
+    {
+        alert('กรุณากรอกปีการศึกษา Ex.2561');
+        return false;
+    }
+
+    if(document.getElementById('cYear').value == "")
+    {
+        alert('กรุณากรอกรหัสเข้าร่วม Ex.Dfrt007');
+        return false;
+    }
+}
+</script>
     <div class="container">
-        <form action="updateSubject.php" method="POST">
+        <form action="updateSubject.php" method="POST" onSubmit="JavaScript:return fncSubmit();">
             <div class="form-group">
                 <div align="center">
                     <label>แก้ไขรายวิชา</label>
@@ -198,6 +227,7 @@ a:hover {
             <br>
         </form>
     </div>
+    </html>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
 

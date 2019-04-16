@@ -82,9 +82,42 @@ teacher.tName LIKE '%พุธษดี%'");
   </form>
 
 </div> -->
-<div class="container">
-  <form action="add.php" method="POST">
-    <div class="form-group">
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+
+    <html>
+<script type="text/javascript">
+function fncSubmit()
+{
+    if(document.getElementById('cNumber').value == "")
+    {
+        alert('กรุณากรอกรหัสวิชา Ex.322444');
+        return false;
+    }
+
+    if(document.getElementById('cName').value == "")
+    {
+        alert('กรุณากรอกชื่อวิชา Ex.Data Science');
+        return false;
+    }
+
+    if(document.getElementById('cYear').value == "")
+    {
+        alert('กรุณากรอกปีการศึกษา Ex.2561');
+        return false;
+    }
+
+    if(document.getElementById('cYear').value == "")
+    {
+        alert('กรุณากรอกรหัสเข้าร่วม Ex.Dfrt007');
+        return false;
+    }
+}
+</script>
+<body >
+	<div class="container">
+<form  action="add.php" method="post" onSubmit="JavaScript:return fncSubmit();">
+<div class="form-group">
       <div align="center">
           <label>เพิ่มวิชา</label>
       </div>
@@ -133,7 +166,8 @@ teacher.tName LIKE '%พุธษดี%'");
     <br>
 </form>
 </div>
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+</body>
+</html>
 
 
     <!-- Bootstrap core JavaScript -->
