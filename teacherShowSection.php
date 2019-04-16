@@ -95,6 +95,7 @@ a:hover {
     $sql="select `teacher`.`tName` AS `tName`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection`,`subject`.`cPassword` AS `cPassword`,`subject`.`cStatus` AS `cStatus`,`teacher`.`position` AS `position` from ((`subject` join `subject_has_teacher` on((`subject_has_teacher`.`subject_cId` = `subject`.`cId`))) join `teacher` on((`subject_has_teacher`.`teacher_tId` = `teacher`.`tId`))) where ((`teacher`.`tId` = '1') and (`subject`.`cNumber` = '$subject_id'))";
     $query = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($query);
+    $year = $row['cYear'];
  ?>
     <div class="container">
         <form action="add.php" method="post">
@@ -137,9 +138,9 @@ a:hover {
       $section = $objResult['cSection'];
     }
     for($i=1;$i<=$section;$i++){
-      echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
+      echo "<a href='teacherShowSectionDetail.php?id=".$subject_id."&section=".$i."&year=".$year."'>"."<button type='button' class='btn btn-primary' id='addsubject'>Section".$i."</button></a>&nbsp&nbsp&nbsp&nbsp";
     }
-    echo "<a href='addSection.php?id=".$subject_id."&tid=".$tid."'onClick=\"return confirm('add section?');\">"."<button type='button' class='btn btn-success' id='addSection'>เพิ่มเซคชั่น"."</button></a>"
+    // echo "<a href='addSection.php?id=".$subject_id."&tid=".$tid."'onClick=\"return confirm('add section?');\">"."<button type='button' class='btn btn-success' id='addSection'>เพิ่มเซคชั่น"."</button></a>"
     ?>
             </div>
 

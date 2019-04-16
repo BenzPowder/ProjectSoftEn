@@ -98,7 +98,7 @@
         if($resultUpdate){
           echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section';</script>";
         }else{
-          die('Could not enter data: ' . mysqli_error($conn));
+          die("<script>alert('ไม่สามารถนำเข้าข้อมูลได้'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section';</script>" . mysqli_error($conn));
         }
       }
     }
