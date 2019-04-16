@@ -1,4 +1,3 @@
-
 <?php
 include "config.php";
 $subject_id = $_GET['id'];
@@ -140,9 +139,9 @@ a:hover {
                         <th>
                             <center>เทอม</center>
                         </th>
-                        <!-- <th>
+                        <th>
 
-                        </th> -->
+                        </th>
                         <!-- <th>
 
                         </th> -->
@@ -153,11 +152,12 @@ a:hover {
 
                     <div align="right">
                         <button type="button" class="btn btn-danger" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">ลบ Section</button>
-                            <br><br>
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">ลบ
+                            Section</button>
+                        <br><br>
                     </div>
 
-                    
+
 
                     <?php
 $i = 0;
@@ -181,13 +181,14 @@ $i = 0;
                     <div align="center">
                         <button type="button" class="btn btn-primary" id="importStudent"
                             onclick="window.location.href='AddTA.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มผู้ช่วยสอนอาจารย์</button>
-                            <br><br>
+                        <br><br>
                     </div>
                     <br> <br>
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
                         <button type="button" class="btn btn-warning" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import file</button>
+                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import
+                            file</button>
                         <button type="button" class="btn btn-primary" id="importStudent"
                             onclick="window.location.href='addStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">เพิ่มนักศึกษา</button>
                     </div>
@@ -258,7 +259,7 @@ while($objResult = mysqli_fetch_array($query)){
 
 
 ?>
-<br><br>
+                            <br><br>
 
                             <br>
         </form>
