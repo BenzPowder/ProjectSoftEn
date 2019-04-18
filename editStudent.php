@@ -71,48 +71,63 @@ a:hover {
     <!-- Header -->
     <br><br>
     <?php
-    $sql = "select max(`subject`.`cSection`) AS `cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject_has_student`.`subject_cId` = `subject`.`cId`) and (`subject_has_student`.`subject_cSection` = `subject`.`cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`student`.`stuId` = '$stuId') and (`subject`.`cNumber` = '$subject_id')) group by `student`.`stuId`,`student`.`stuName`,`subject`.`cNumber`";
+    $sql = "select `subject`.`cSection` AS `cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName` from ((`subject` join `subject_has_student` on(((`subject_has_student`.`subject_cId` = `subject`.`cId`) and (`subject_has_student`.`subject_cSection` = `subject`.`cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where (`student`.`stuId` = '$stuId')";
     $query = mysqli_query($conn,$sql);
     $result = mysqli_fetch_array($query);
-
-    $sql_max_section = "select `subject`.`cId` AS `cId`,`subject`.`cNumber` AS `cNumber`,`subject`.`cName` AS `cName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,max(`subject`.`cSection`) AS `cSection`,`subject`.`cPassword` AS `cPassword`,`subject`.`cStatus` AS `cStatus` from `subject` where (`subject`.`cNumber` = '$subject_id') group by `subject`.`cNumber`";
-    $query_max_section = mysqli_query($conn,$sql_max_section);
-    $result_max_section = mysqli_fetch_array($query_max_section);
-    $max_section = $result_max_section['cSection'];
-
-
-    $sql_maxid = "select `subject`.`cId` AS `cId`,`subject`.`cSection` AS `cSection` from `subject` where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cTerm` = 2) and (`subject`.`cYear` = 2562) and (`subject`.`cSection` = $section))";
-      $query_maxid = mysqli_query($conn,$sql_maxid);
-      $result_maxid = mysqli_fetch_array($query_maxid);
-
-
  ?>
     <div class="container">
-        <form action="updateSectionOfStudent.php" method="POST">
+        <form action="add.php" method="POST">
             <div class="form-group">
                 <div align="center">
-                    <label>ย้ายเซคชันนักศึกษา</label>
+                    <label>แก้ไขข้อมูลนักศึกษา</label>
                 </div>
                 <label>รหัสนักศึกษา</label>
-                <input type="text" name="stuId" class="form-control" id="cNumber" value="<?=$result['stuId'] ?>" disabled>
-                <input type="hidden" name="stuId" value="<?=$result['stuId'] ?>">
+                <input type="text" name="cNumber" class="form-control" id="cNumber" value="<?=$result['stuId'] ?>">
             </div>
             <div class="form-group">
                 <label>ชื่อนักศึกษา</label>
-                <input type="text" name="stuName" class="form-control" id="cName" value="<?=$result['stuName'] ?>" disabled>
-                <input type="hidden" name="stuName" value="<?=$result['stuName'] ?>">
+                <input type="text" name="cName" class="form-control" id="cName" value="<?=$result['stuName'] ?>">
             </div>
             <div class="form-group">
                 <label>เซคชัน</label>
                 <select class="form-control" name="cSection" id="cSection">
-                  <?php
-                  for($i=1;$i<=$max_section;$i++){
-                    echo "<option value='".$i."'>".$i."</option>";
-                  }
-                  ?>
+                    <option value="1"
+                    <?php
+                      if($result['cSection']=='1'){
+                        echo "selected";
+                      }
+                    ?>
+                    >1</option>
+                    <option value="2"
+                    <?php
+                      if($result['cSection']=='2'){
+                        echo "selected";
+                      }
+                    ?>
+                    >2</option>
+                    <option value="3"
+                    <?php
+                      if($result['cSection']=='3'){
+                        echo "selected";
+                      }
+                    ?>
+                    >3</option>
+                    <option value="4"
+                    <?php
+                      if($result['cSection']=='4'){
+                        echo "selected";
+                      }
+                    ?>
+                    >4</option>
+                    <option value="5"
+                    <?php
+                      if($result['cSection']=='5'){
+                        echo "selected";
+                      }
+                    ?>
+                    >5</option>
                 </select>
             </div>
-            <input type="hidden" name="result_maxid" value="<?=$result_maxid['cId'] ?>">
             <div align="center">
                 <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
             </div>
