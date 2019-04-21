@@ -91,13 +91,13 @@ a:hover {
 <script type="text/javascript">
 function fncSubmit()
 {
-    if(document.getElementById('TANumber').value == "")
+    if(document.getElementById('sNumber').value == "")
     {
         alert('กรุณากรอกรหัสรหัสนักศึกษา Ex.593020466-7');
         return false;
     }
 
-    if(document.getElementById('TAName').value == "")
+    if(document.getElementById('sName').value == "")
     {
         alert('กรุณากรอกชื่อนักศึกษา Ex.นายทดสอบ ทดสอบ');
         return false;
@@ -112,7 +112,7 @@ function fncSubmit()
                     <label>เพิ่มข้อมูลนักศึกษา</label>
                 </div>
                 <label>รหัสนักศึกษา</label>
-                <input type="text" name="sNumber" class="form-control" id="sNumber" placeholder="593020466-7">
+                <input type="text" name="sNumber" class="form-control" id="sNumber" pattern="[0-9- -]{1,}" title="กรอกตัวเลขเท่านั้น" placeholder="593020466-7">
             </div>
             <div class="form-group">
                 <label>ชื่อนักศึกษา</label>
