@@ -121,11 +121,11 @@ a:hover {
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
-                  <div align="right">
+                  <!-- <div align="right">
                         <button type="button" class="btn btn-danger" id="deleteSection" onclick="deleteSection(<?=$section?>)">
                           ลบ Section
                           </button>
-                            <br><br>
+                            <br><br> -->
                     </div>
                     <tr>
                         <th>
