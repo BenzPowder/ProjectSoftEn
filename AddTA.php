@@ -115,7 +115,7 @@ function fncSubmit()
             </div>
             <div class="form-group">
                 <label>ชื่อผู้ช่วยสอน</label>
-                <input type="text" name="TAName" class="form-control" id="TAName" pattern="[A-Za-zก-ฮ]{1,}" title="กรอกตัวอักษรเท่านั้น" placeholder="นายทดสอบ ทดสอบ" >
+                <input type="text" name="TAName" class="form-control" id="TAName" placeholder="นายทดสอบ ทดสอบ" >
             </div>
             <div align="center">
               <input type="hidden" name="id" value="<?=$subject_id ?>">
