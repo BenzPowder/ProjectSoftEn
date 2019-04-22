@@ -121,11 +121,11 @@ a:hover {
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
-                  <div align="right">
+                  <!-- <div align="right">
                         <button type="button" class="btn btn-danger" id="deleteSection" onclick="deleteSection(<?=$section?>)">
                           ลบ Section
                           </button>
-                            <br><br>
+                            <br><br> -->
                     </div>
                     <tr>
                         <th>
@@ -177,7 +177,7 @@ $i = 0;
                     <h1 align="center">รายชื่อนักศึกษา</h1>
                     <div align="right">
                         <button type="button" class="btn btn-warning" id="importStudent"
-                            onclick="window.location.href='importStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
+                            onclick="window.location.href='importfileStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
                         <button type="button" class="btn btn-primary" id="AddStudent"
                             onclick="addStudent()">เพิ่มนักศึกษา</button>
                     </div>

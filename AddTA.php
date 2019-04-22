@@ -111,7 +111,7 @@ function fncSubmit()
                     <label>เพิ่มข้อมูลผู้ช่วยสอน</label>
                 </div>
                 <label>รหัสผู้ช่วยสอน</label>
-                <input type="text" name="TANumber" class="form-control" id="TANumber" placeholder="593020466-7">
+                <input type="text" name="TANumber" class="form-control" id="TANumber" pattern="[0-9- -]{1,}" title="กรอกตัวเลขเท่านั้น" placeholder="593020466-7">
             </div>
             <div class="form-group">
                 <label>ชื่อผู้ช่วยสอน</label>

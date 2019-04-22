@@ -107,7 +107,7 @@ function fncSubmit()
         return false;
     }
 
-    if(document.getElementById('cYear').value == "")
+    if(document.getElementById('cPassword').value == "")
     {
         alert('กรุณากรอกรหัสเข้าร่วม Ex.Dfrt007');
         return false;

@@ -1,10 +1,9 @@
 <?php
 include "config.php";
-  $subject_id = $_GET['id'];
-  $section = $_GET['section'];
-  $year = $_GET['year'];
-
+$subject_id = $_GET['id'];
+$section = $_GET['section'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,6 +70,8 @@ a:hover {
 
     <!-- Header -->
     <br><br>
+
+
     <?php
  ?>
     <!-- <div class="box" align="center">
@@ -87,47 +88,26 @@ a:hover {
   </form>
 
 </div> -->
-<html>
-<script type="text/javascript">
-function fncSubmit()
-{
-    if(document.getElementById('sNumber').value == "")
-    {
-        alert('กรุณากรอกรหัสรหัสนักศึกษา Ex.593020466-7');
-        return false;
-    }
 
-    if(document.getElementById('sName').value == "")
-    {
-        alert('กรุณากรอกชื่อนักศึกษา Ex.นายทดสอบ ทดสอบ');
-        return false;
-    }
-}
-</script>
+
 
     <div class="container">
-        <form  action="functionAddStudent.php" method="post" onSubmit="JavaScript:return fncSubmit();">
+
+        <form  action="importStudent.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <div align="center">
                     <label>เพิ่มข้อมูลนักศึกษา</label>
                 </div>
-                <label>รหัสนักศึกษา</label>
-                <input type="text" name="sNumber" class="form-control" id="sNumber" pattern="[0-9- -]{1,}" title="กรอกตัวเลขเท่านั้น" placeholder="593020466-7">
-            </div>
-            <div class="form-group">
-                <label>ชื่อนักศึกษา</label>
-                <input type="text" name="sName"  class="form-control" id="sName" placeholder="นายทดสอบ ทดสอบ" >
+                   <br>
+                <input type="file" name="file" class="form-control" id="file">
             </div>
             <div align="center">
-              <input type="hidden" name="id" value="<?=$subject_id ?>">
-              <input type="hidden" name="section" value="<?=$section ?>">
-              <input type="hidden" name="year" value="<?=$year ?>">
-              <input type="submit" name="submit" class="btn btn-primary" id="addSubject" value="บันทึก">
+                <input type="submit" name="upload" class="btn btn-primary" id="upload" value="บันทึก">
             </div>
             <br>
         </form>
     </div>
-    </html>
+
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
 
@@ -147,4 +127,6 @@ function fncSubmit()
     <script src="js/freelancer.min.js"></script>
 
 </body>
+
+
 </html>
