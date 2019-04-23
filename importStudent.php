@@ -33,9 +33,10 @@ if(isset($_POST["import"]))
         $updateSectionHasStudent = "INSERT INTO subject_has_student VALUES ('$cId','$section','$stuId')";
         // echo $updateSectionHasStudent."<br>";
         $resultUpdate = mysqli_query($conn,$updateSectionHasStudent);
-        echo $resultUpdate;
         if($resultUpdate){
            echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section&year=$year';</script>";
+        } else {
+          echo "<script>alert('บันทึกเรียบร้อย'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section&year=$year';</script>";
         }
       }
             }
