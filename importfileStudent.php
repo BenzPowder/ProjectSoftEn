@@ -93,16 +93,19 @@ a:hover {
 
     <div class="container">
 
-        <form  action="importStudent.php" method="POST" enctype="multipart/form-data">
+        <form  action="importStudent.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <div align="center">
                     <label>เพิ่มข้อมูลนักศึกษา</label>
                 </div>
                    <br>
-                <input type="file" name="file" class="form-control" id="file">
+                <input type="file" name="excel" class="form-control" id="excel">
+                <input type="hidden" name="id" value="<?=$subject_id ?>">
+              <input type="hidden" name="section" value="<?=$section ?>">
             </div>
             <div align="center">
-                <input type="submit" name="upload" class="btn btn-primary" id="upload" value="บันทึก">
+            
+                <input type="submit" name="import" class="btn btn-primary" id="import" value="บันทึก">
             </div>
             <br>
         </form>
