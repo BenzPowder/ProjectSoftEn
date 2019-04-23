@@ -7,6 +7,16 @@
       $TAName = mysqli_real_escape_string($conn,$_POST['TAName']);
       $TANumber = mysqli_real_escape_string($conn,$_POST['TANumber']);
 
+      $sql_search_ta = "SELECT * FROM ta WHERE taId = '$TANumber'";
+      echo $sql_search_ta;
+      $query_search_ta = mysqli_query($conn,$sql_search_ta);
+      $numrow = mysqli_fetch_array($query_search_ta);
+      var_dump($numrow);
+      if($numrow==null){
+        $insert_ta = "INSERT INTO ta VALUES('$TANumber','$TAName')";
+        $execute_insert_ta = mysqli_query($conn,$insert_ta);
+        // echo "ไม่มี ta ในระบบ";
+      }
       $query = mysqli_query($conn,"select(`subject`.`cId`) AS `cId` from `subject` where ((`subject`.`cNumber` = '$cNumber') and (`subject`.`cSection` = '$cSection') and (`subject`.`cYear` = '$cYear'))");
 
       $result_cid = mysqli_fetch_array($query);
