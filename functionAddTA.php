@@ -17,6 +17,8 @@
           $insert_relation = mysqli_query($conn,$insert_subject_has_ta);
           if($insert_relation){
             echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$cNumber&section=$cSection&year=$cYear';</script>";
+          }else{
+            echo "<script>alert('ไม่มีชื่อ TA ในระบบ'); location.href='teacherShowSectionDetail.php?id=$cNumber&section=$cSection&year=$cYear';</script>";
           }
       }
 ?>
