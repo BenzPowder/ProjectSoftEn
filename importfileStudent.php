@@ -107,9 +107,37 @@ a:hover {
             
                 <input type="submit" name="import" class="btn btn-primary" id="import" value="บันทึก">
             </div>
+            <br><br>
+            <div align="left">
+                    <label>*** ขั้นตอนการ Upload File ***</label>  
+                    <br><br>                 
+                </div>
+                <div align="center">
+
+                <?php
+ 
+$allowed_types=array('jpg','jpeg','gif','png');  
+$dir    ="UI/";  
+$files1 = scandir($dir); 
+
+foreach($files1 as $key=>$value){  
+    if($key>1){  
+        $file_parts = explode('.',$value);  
+        $ext = strtolower(array_pop($file_parts));  
+        if(in_array($ext,$allowed_types)){  
+            echo "<img style='width:50%;' src='".$dir.$value."'/>&nbsp;";     
+        }  
+  
+    }  
+} 
+    ?>
+</div>
+
             <br>
         </form>
     </div>
+
+    
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
