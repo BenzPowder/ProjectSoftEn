@@ -206,6 +206,8 @@ $i = 0;
                     </th>
                     <th>
                     </th>
+                    <th>
+                    </th>
 
                 </tr>
             </thead>
@@ -225,6 +227,8 @@ while($objResult = mysqli_fetch_array($query)){
         echo "<td><center>".$objResult['cTerm']."</center></td>";
           echo "<td><center><a href=\" \"><input type=\"checkbox\" checked data-toggle=\"toggle\" data-onstyle=\"success\"
           data-offstyle=\"danger\"></a></center></td>";
+          echo "<td><center><a href='MoveSectionDetail.php?id=".$subject_id.'&section='.$section."&stuId=".$stu_id."&year=".$year."'>"."<button type='button' class='btn btn-primary'
+          id='edit-student-section'>ข้อมูล</button></a></center></td>";
           echo "<td><center><a href='editStudent.php?id=".$subject_id.'&section='.$section."&stuId=".$stu_id."&year=".$year."'>"."<button type='button' class='btn btn-primary'
           id='edit-student-section'>แก้ไข</button></a></center></td>";
 

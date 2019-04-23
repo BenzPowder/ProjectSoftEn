@@ -22,16 +22,27 @@
       $old_cId = $result_old_cid['cId'];
 
       $sql_update = "UPDATE subject_has_student SET subject_cId = '$new_cId' , subject_cSection = '$cSection' WHERE subject_cId = '$old_cId' AND student_stuId = '$stuId'";
-
-      $sql_move = "INSERT INTO move VALUES(NULL,'$stuId','$oldSection','$cSection','$move_date')";
+      $sql_search = "select `subject`.`cId` AS `cId` from `subject` where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$cSection') and (`subject`.`cYear` = '$year'))";
+      $query_cid = mysqli_query($conn,$sql_search);
+      $cId = mysqli_fetch_array($query_cid);
+      $class_id = $cId['cId'];
+      $sql_move = "INSERT INTO move VALUES(NULL,'$stuId','$oldSection','$move_date','$class_id','$cSection')";
+    
       $execute_move = mysqli_query($conn,$sql_move);
+      // echo $sql_move.'<br>'; 
+      // var_dump($sql_move).'<br>';
+      // echo $execute_move.'<br>';
+      // var_dump($execute_move).'<br>';
       
       $execute = mysqli_query($conn,$sql_update);
       if($execute&&$execute_move){
-      // if($execute){
+        //if($execute){
         echo "<script>alert('อัพเดทเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$cSection&year=$year';</script>";
       }else{
-        die('Could not enter data: ' . mysqli_error($conn));
+        if($execute){
+          die('excute error: ' . mysqli_error($conn));
+        }else{
+        die('excute error move error: ' . mysqli_error($conn));}
       }
 }
 ?>
