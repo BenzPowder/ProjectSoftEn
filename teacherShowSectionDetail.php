@@ -121,37 +121,37 @@ a:hover {
  ?>
             <table class="table table-striped" id="myTable">
                 <thead>
-                  <!-- <div align="right">
+                    <!-- <div align="right">
                         <button type="button" class="btn btn-danger" id="deleteSection" onclick="deleteSection(<?=$section?>)">
                           ลบ Section
                           </button>
                             <br><br> -->
-                    </div>
-                    <tr>
-                        <th>
-                            <center>รหัสผู้ช่วยสอน</center>
-                        </th>
-                        <th>
-                            <center>ชื่อผู้ช่วยสอน</center>
-                        </th>
-                        <th>
-                            <center>ปีการศึกษา</center>
-                        </th>
-                        <th>
-                            <center>เทอม</center>
-                        </th>
-                        <!-- <th>
+    </div>
+    <tr>
+        <th>
+            <center>รหัสผู้ช่วยสอน</center>
+        </th>
+        <th>
+            <center>ชื่อผู้ช่วยสอน</center>
+        </th>
+        <th>
+            <center>ปีการศึกษา</center>
+        </th>
+        <th>
+            <center>เทอม</center>
+        </th>
+        <th>
+
+        </th>
+        <!-- <th>
 
                         </th> -->
-                        <!-- <th>
 
-                        </th> -->
+    </tr>
+    </thead>
+    <tbody>
 
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php
+        <?php
 $i = 0;
        while($objResult = mysqli_fetch_array($query2)){
         $i= $i+1;
@@ -169,50 +169,49 @@ $i = 0;
       }
       echo "</table>";
 ?>
-                    <div align="center">
-                        <button type="button" class="btn btn-primary" id="AddTa" onclick="addTA()">เพิ่มผู้ช่วยสอนอาจารย์</button>
-                            <br><br>
-                    </div>
-                    <br> <br>
-                    <h1 align="center">รายชื่อนักศึกษา</h1>
-                    <div align="right">
-                        <button type="button" class="btn btn-warning" id="importStudent"
-                            onclick="window.location.href='importfileStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
-                        <button type="button" class="btn btn-primary" id="AddStudent"
-                            onclick="addStudent()">เพิ่มนักศึกษา</button>
-                    </div>
+        <div align="center">
+            <button type="button" class="btn btn-primary" id="AddTa" onclick="addTA()">เพิ่มผู้ช่วยสอนอาจารย์</button>
+            <br><br>
+        </div>
+        <br> <br>
+        <h1 align="center">รายชื่อนักศึกษา</h1>
+        <div align="right">
+            <button type="button" class="btn btn-warning" id="importStudent"
+                onclick="window.location.href='importfileStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
+            <button type="button" class="btn btn-primary" id="AddStudent" onclick="addStudent()">เพิ่มนักศึกษา</button>
+        </div>
 
-                    <br>
-                    <?php
+        <br>
+        <?php
                     $sql = "select `subject_has_student`.`subject_cId` AS `subject_cId`,`subject_has_student`.`subject_cSection` AS `subject_cSection`,`student`.`stuId` AS `stuId`,`student`.`stuName` AS `stuName`,`subject`.`cYear` AS `cYear`,`subject`.`cTerm` AS `cTerm`,`subject`.`cNumber` AS `cNumber` from ((`subject` join `subject_has_student` on(((`subject`.`cId` = `subject_has_student`.`subject_cId`) and (`subject`.`cSection` = `subject_has_student`.`subject_cSection`)))) join `student` on((`subject_has_student`.`student_stuId` = `student`.`stuId`))) where ((`subject`.`cNumber` = '$subject_id') and (`subject`.`cSection` = '$section'))";
                     $query = mysqli_query($conn,$sql);
  ?>
-                    <table class="table table-striped" id="myTable">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <center>รหัสนักศึกษา</center>
-                                </th>
-                                <th>
-                                    <center>ชื่อนักศึกษา</center>
-                                </th>
-                                <th>
-                                    <center>ปีการศึกษา</center>
-                                </th>
-                                <th>
-                                    <center>เทอม</center>
-                                </th>
-                                <th>
-                                    <center>สถานะภาพนักศึกษา</center>
-                                </th>
-                                <th>
-                                </th>
+        <table class="table table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        <center>รหัสนักศึกษา</center>
+                    </th>
+                    <th>
+                        <center>ชื่อนักศึกษา</center>
+                    </th>
+                    <th>
+                        <center>ปีการศึกษา</center>
+                    </th>
+                    <th>
+                        <center>เทอม</center>
+                    </th>
+                    <th>
+                        <center>สถานะภาพนักศึกษา</center>
+                    </th>
+                    <th>
+                    </th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+                </tr>
+            </thead>
+            <tbody>
 
-                            <?php
+                <?php
 $i = 0;
 while($objResult = mysqli_fetch_array($query)){
   $stu_id = $objResult['stuId'];
@@ -247,50 +246,50 @@ while($objResult = mysqli_fetch_array($query)){
       // }
       echo "</table>";
 ?>
-                            <br>
-        </form>
-    </div>
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+                <br>
+                </form>
+                </div>
+                <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+                <!-- Bootstrap core JavaScript -->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/popper/popper.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                <!-- Plugin JavaScript -->
+                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+                <!-- Contact Form JavaScript -->
+                <script src="js/jqBootstrapValidation.js"></script>
+                <script src="js/contact_me.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/freelancer.min.js"></script>
+                <!-- Custom scripts for this template -->
+                <script src="js/freelancer.min.js"></script>
 
-    <div align="center">
-        <div align="center"><a href=javascript:history.back(1) class="btn btn-primary">ย้อนกลับ</th></a>
-        </div><br>
+                <div align="center">
+                    <div align="center"><a href=javascript:history.back(1) class="btn btn-primary">ย้อนกลับ</th></a>
+                    </div><br>
 
 </body>
+
 </html>
 <script>
-  function deleteSection(section){
-    if(section!=1){
-      if(confirm('are you sure you want to delete??')==true){
-        window.location.href="deleteSection.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>";
-      }
-  }else{
-    alert("ไม่สามารถลบเซคชัน <?=$section?> ได้");
+function deleteSection(section) {
+    if (section != 1) {
+        if (confirm('are you sure you want to delete??') == true) {
+            window.location.href = "deleteSection.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>";
+        }
+    } else {
+        alert("ไม่สามารถลบเซคชัน <?=$section?> ได้");
     }
-  }
+}
 
-  function addTA(){
-      window.location.href='AddTA.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
-  }
+function addTA() {
+    window.location.href = 'AddTA.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
+}
 
-  function addStudent(){
-      window.location.href='addStudent.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
-  }
-
+function addStudent() {
+    window.location.href = 'addStudent.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>';
+}
 </script>
