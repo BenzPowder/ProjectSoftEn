@@ -2,7 +2,7 @@
 include('config.php');
 $subject_id = $_POST['id'];
 $section = $_POST['section'];
-$year = $_POST['year'];
+$year = $_GET['year'];
 $connect = mysqli_connect("localhost", "root", "root", "projectsoften");
 $connect->query("SET NAMES utf8");
 $output = '';
@@ -36,8 +36,6 @@ if(isset($_POST["import"]))
         echo $resultUpdate;
         if($resultUpdate){
            echo "<script>alert('บันทึกเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section&year=$year';</script>";
-        } else {
-          die("<script>alert('ไม่สามารถนำเข้าข้อมูลได้'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$section&year=&year';</script>" . mysqli_error($conn));
         }
       }
             }
