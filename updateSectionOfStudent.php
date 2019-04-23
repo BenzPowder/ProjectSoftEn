@@ -25,9 +25,10 @@
 
       $sql_move = "INSERT INTO move VALUES(NULL,'$stuId','$oldSection','$cSection','$move_date')";
       $execute_move = mysqli_query($conn,$sql_move);
-      //
+      
       $execute = mysqli_query($conn,$sql_update);
       if($execute&&$execute_move){
+      // if($execute){
         echo "<script>alert('อัพเดทเรียบร้อย!'); location.href='teacherShowSectionDetail.php?id=$subject_id&section=$cSection&year=$year';</script>";
       }else{
         die('Could not enter data: ' . mysqli_error($conn));
