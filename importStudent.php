@@ -3,8 +3,6 @@ include('config.php');
 $subject_id = $_POST['id'];
 $section = $_POST['section'];
 $year = $_GET['year'];
-$connect = mysqli_connect("localhost", "root", "root", "projectsoften");
-$connect->query("SET NAMES utf8");
 $output = '';
 if(isset($_POST["import"]))
 {
@@ -17,7 +15,6 @@ if(isset($_POST["import"]))
   $file = $_FILES["excel"]["tmp_name"]; // getting temporary source of excel file
   include("Classes/PHPExcel/IOFactory.php"); // Add PHPExcel Library in this code
   // include("PHPExcel/Autoloader.php");
-   $file = $_FILES['excel']['tmp_name'];
             $openFile = fopen($file, 'r');
 
             $cId=0;
