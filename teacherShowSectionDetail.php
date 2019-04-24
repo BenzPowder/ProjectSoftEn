@@ -177,7 +177,7 @@ $i = 0;
         <h1 align="center">รายชื่อนักศึกษา</h1>
         <div align="right">
             <button type="button" class="btn btn-warning" id="importStudent"
-                onclick="window.location.href='importfileStudent.php?id=<?=$subject_id?>&section=<?=$section?>'">import</button>
+                onclick="window.location.href='importfileStudent.php?id=<?=$subject_id?>&section=<?=$section?>&year=<?=$year?>'">import</button>
             <button type="button" class="btn btn-primary" id="AddStudent" onclick="addStudent()">เพิ่มนักศึกษา</button>
         </div>
 
