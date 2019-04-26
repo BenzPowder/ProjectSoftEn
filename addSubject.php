@@ -122,15 +122,15 @@ function fncSubmit()
           <label>เพิ่มวิชา</label>
       </div>
       <label>รหัสวิชา</label>
-      <input type="text" name="cNumber" class="form-control" id="cNumber" placeholder="">
+      <input type="text" name="cNumber" class="form-control" required pattern="[a-zA-Z-0-9\s]*" title="กรุณากรอกตัวเลขและตัวอักษร" id="cNumber" placeholder="">
     </div>
     <div class="form-group">
       <label>ชื่อวิชา</label>
-      <input type="text" name="cName" class="form-control" id="cName" placeholder="">
+      <input type="text" name="cName" class="form-control" required pattern="[a-zA-Zก-ุฯ-๙\s]*" title="กรุณากรอกตัวอักษร" id="cName" placeholder="">
     </div>
     <div class="form-group">
       <label>ปีการศึกษา</label>
-      <input type="text" name="cYear" class="form-control" id="cYear" placeholder="">
+      <input type="text" name="cYear" class="form-control" id="cYear" required pattern="[0-9\s]{4}" title="กรุณากรอกปีการศึกษา" placeholder="">
     </div>
     <div class="form-group">
       <label>เทอม</label>
